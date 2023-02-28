@@ -1,14 +1,14 @@
 <template>
     <nav class="navbar">
-        <a class="active" href="#"><i class="fa fa-fw fa-home"></i> </a>
-        <a href="#"><i class="fa fa-fw fa-search"></i> </a>
-        <a href="#"><i class="fa-solid fa-plus"></i> </a>
-        <a href="#"><i class="fa fa-fw fa-user"></i> </a>
+        <a class="active" href="#"><i class="bi bi-house-fill"></i> </a>
+        <a href="#"><i class="bi bi-search"></i> </a>
+        <a href="#"><i class="bi bi-plus"></i> </a>
+        <a href="#"><i class="bi bi-person-fill"></i> </a>
     </nav>
 </template>
 
 <style scoped>
-@import url('path/to/font-awesome/css/font-awesome.min.css');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css');
 
 body {
     margin: 0;
