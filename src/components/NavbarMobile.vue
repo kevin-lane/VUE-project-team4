@@ -7,10 +7,9 @@
     </nav>
 </template>
 
-<script src="https://kit.fontawesome.com/315f7034a9.js" crossorigin="anonymous"></script>
-
-
 <style scoped>
+@import url('path/to/font-awesome/css/font-awesome.min.css');
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
