@@ -2,7 +2,7 @@
     <nav class="navbar">
         <a class="active" href="#"><i class="bi bi-house-fill"></i> </a>
         <a href="#"><i class="bi bi-search"></i> </a>
-        <a href="#"><i class="bi bi-plus"></i> </a>
+        <a href="#"><i class="bi bi-plus-lg"></i> </a>
         <a href="#"><i class="bi bi-person-fill"></i> </a>
     </nav>
 </template>
@@ -12,7 +12,6 @@
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .navbar {
@@ -20,9 +19,9 @@ body {
     background-color: #ffffff;
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     text-align: center;
-    margin-bottom: 1.5vh;
 }
 
 .navbar a {
