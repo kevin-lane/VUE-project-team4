@@ -1,18 +1,18 @@
 <template>
   <div id="container">
     <div id="logo">
-      <a href=""><h1>Instabuy</h1></a>
-      <a href=""><i class="bi bi-suit-heart"></i></a>
+      <h1>Instabuy</h1>
+      <a href=""> <i class="bi bi-suit-heart"></i></a>
     </div>
 
     <div id="navBar">
       <ul>
         <li>
-          <i class="bi bi-telephone"> </i>
-          <a href=""> Tech</a>
+          <i class="bi bi-lamp-fill"></i>
+          <a href="">Furniture </a>
         </li>
         <li>
-          <i class="bi bi-plus-square"></i>
+          <i class="bi bi-plus-square-fill"></i>
           <a href=""> Health</a>
         </li>
 
@@ -21,13 +21,33 @@
           <a href=""> Music</a>
         </li>
         <li>
-          <i class="bi bi-dribbble"></i>
+          <i class="bi bi-hypnotize"></i>
           <a href=""> Sport</a>
         </li>
 
         <li>
-          <i class="bi bi-train-front"></i>
-          <a href=""> Trip</a>
+          <i class="bi bi-train-front-fill"></i>
+          <a href=""> Train</a>
+        </li>
+
+        <li>
+          <i class="bi bi-handbag-fill"></i>
+          <a href=""> Fashion</a>
+        </li>
+
+        <li>
+          <i class="bi bi-cup-hot-fill"></i>
+          <a href=""> Leisure</a>
+        </li>
+
+        <li>
+          <i class="bi bi-gem"></i>
+          <a href=""> Jewelry</a>
+        </li>
+
+        <li>
+          <i class="bi bi-grid-3x3-gap-fill"></i>
+          <a href="">Other </a>
         </li>
       </ul>
     </div>
@@ -43,13 +63,11 @@
 
 ul {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   list-style: none;
   text-align: center;
-  margin-right: 20px;
-  column-gap: 10px;
+  align-content: center;
 }
-
 a {
   color: black;
 }
@@ -85,34 +103,6 @@ h1 {
 #logo {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 10px;
+  margin: 5px 20px 5px 20px;
 }
-/*@media only screen and (min-width: 320px) {
-  body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    box-sizing: border-box;
-  }
-  #container {
-    width: 100%;
-  }
-  .bi {
-    padding: 15px;
-  }
-  a {
-    font-size: 12px;
-  }
-  ul {
-    display: flex;
-    column-gap: 2%;
-  }
-  #navBar {
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
-  }
-} */
 </style>
