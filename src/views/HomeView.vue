@@ -4,7 +4,5 @@
 
 <template>
   <main>
-    <h1>Instabuy</h1>
-    <LoginForm />
   </main>
 </template>
