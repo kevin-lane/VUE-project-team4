@@ -1,11 +1,11 @@
 <script setup>
 import HeroSection from './components/HeroSection.vue'
-import WishList from './components/WishList.vue';
+import PostAdd from './components/PostAdd.vue';
 </script>
 
 <template>
   <HeroSection/>
-  <WishList/>
+  <PostAdd/>
 </template>
 
 <style scoped></style>
