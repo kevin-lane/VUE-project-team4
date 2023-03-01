@@ -4,7 +4,5 @@ import LoginForm from '../components/LoginForm.vue'
 
 <template>
   <main>
-    <h1>Instabuy</h1>
-    <LoginForm />
   </main>
 </template>
