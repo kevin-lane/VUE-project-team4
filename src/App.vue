@@ -1,11 +1,11 @@
 <script setup>
 import HeroSection from './components/HeroSection.vue'
-import NavBar from './components/NavBar.vue'
+import WishList from './components/WishList.vue';
 </script>
 
 <template>
-  <NavBar />
   <HeroSection/>
+  <WishList/>
 </template>
 
 <style scoped></style>
