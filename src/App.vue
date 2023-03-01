@@ -1,12 +1,11 @@
 <script setup>
-  import { RouterLink, RouterView } from 'vue-router';
+import HeroSection from './components/HeroSection.vue'
+import NavBar from './components/NavBar.vue'
 </script>
 
 <template>
-
-  <RouterView />
+  <NavBar />
+  <HeroSection/>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
