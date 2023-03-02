@@ -4,9 +4,9 @@ import NavbarMobile from './components/NavbarMobile.vue'
 </script>
 
 <template>
-    <NavbarMobile />
+     <NavbarMobile />
 
-    <RouterView />
+<RouterView />
 </template>
 
 <style scoped>

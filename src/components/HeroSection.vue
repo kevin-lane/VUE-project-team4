@@ -26,6 +26,8 @@
 
  .background {
     background-image: url("/public/Background-mobile-small-opac.png");
+    min-width: 100%;
+    min-height: 100%;
  }
 
 }

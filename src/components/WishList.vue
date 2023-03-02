@@ -8,27 +8,27 @@
         <div class="grid">
             <div class="div-card">
                 <img src="14331900004.jpg" alt="">
-                <h3>$18.00</h3>
+                <h4>$18.00</h4>
             </div>
             <div class="div-card">
                 <img src="14331900004.jpg" alt="">
-                <h3>$18.00</h3>
+                <h4>$18.00</h4>
             </div>
             <div class="div-card">
                 <img src="14331900004.jpg" alt="">
-                <h3>$18.00</h3>
+                <h4>$18.00</h4>
             </div>
             <div class="div-card">
                 <img src="14331900004.jpg" alt="">
-                <h3>$18.00</h3>
+                <h4>$18.00</h4>
             </div>
             <div class="div-card">
                 <img src="14331900004.jpg" alt="">
-                <h3>$18.00</h3>
+                <h4>$18.00</h4>
             </div>
             <div class="div-card">
                 <img src="14331900004.jpg" alt="">
-                <h3>$18.00</h3>
+                <h4>$18.00</h4>
             </div>
 
 
