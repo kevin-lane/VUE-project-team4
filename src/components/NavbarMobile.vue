@@ -32,4 +32,10 @@ body {
     font-size: 17px;
     text-align: center;
 }
+
+@media (hover: hover) {
+    a:hover {
+        background-color: hsla(160, 100%, 37%, 0.2);
+    }
+}
 </style>
