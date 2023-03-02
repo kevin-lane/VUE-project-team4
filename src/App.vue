@@ -1,9 +1,12 @@
 <script setup>
-import FilterComponent from './components/FilterComponent.vue'
+import HeroSection from './components/HeroSection.vue'
+import NavBar from './components/NavBar.vue'
 </script>
 
 <template>
-  <FilterComponent />
+ <NavBar />
+  <HeroSection/>
+
 </template>
 
 <style scoped></style>
