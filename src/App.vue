@@ -1,11 +1,9 @@
 <script setup>
-
-import NavBar from './components/NavBar.vue'
+import FilterComponent from './components/FilterComponent.vue'
 </script>
 
 <template>
-  <NavBar />
-
+  <FilterComponent />
 </template>
 
 <style scoped></style>
