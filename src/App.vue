@@ -11,3 +11,4 @@ import NavbarMobile from './components/NavbarMobile.vue'
 
 <style scoped>
 </style>
+
