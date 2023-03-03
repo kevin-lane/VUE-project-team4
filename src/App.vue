@@ -8,7 +8,8 @@ import PopupWindow from './components/PopupWindow.vue';
   <NavBar />
   <HeroSection/>
   <PopupWindow />
-
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
+
