@@ -1,6 +1,9 @@
 <script setup>
 import SearchForm from '../components/SearchForm.vue';
 import CartPaymentMobile from '../components/CartPaymentMobile.vue';
+import PaymentDenial from '../components/PaymentDenial.vue';
+import PaymentAproved from '../components/PaymentAproved.vue';
+import ProfilePage from '../components/ProfilePage.vue';
 </script>
 
 <template>
@@ -8,5 +11,8 @@ import CartPaymentMobile from '../components/CartPaymentMobile.vue';
     <h1>Instabuy</h1>
     <SearchForm />
     <CartPaymentMobile />
+    <PaymentDenial />
+    <PaymentAproved />
+    <ProfilePage />
   </main>
 </template>
