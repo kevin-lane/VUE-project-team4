@@ -1,9 +1,17 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import mainCards from '../components/mainCards.vue'
+
+
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+<mainCards/>
+
 </template>
+<script>
+
+</script>
+<style>
+
+
+</style>
