@@ -1,8 +1,17 @@
 <script setup>
+import mainCards from '../components/mainCards.vue'
+
 
 </script>
 
 <template>
-  <main>
-  </main>
+<mainCards/>
+
 </template>
+<script>
+
+</script>
+<style>
+
+
+</style>

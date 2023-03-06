@@ -12,4 +12,3 @@ import PopupWindow from './components/PopupWindow.vue';
 
 <style scoped>
 </style>
-
