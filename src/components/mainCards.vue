@@ -20,7 +20,7 @@
     </div>
   </div>
 </template>
-<script>//Oscar
+<script scoped>//Oscar
 export default {//Export default
   data() {
     return {
