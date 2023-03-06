@@ -4,6 +4,7 @@ import EditProfile from './components/EditProfile.vue';
 
 <template>
     <EditProfile />
+
 </template>
 
 <style scoped>

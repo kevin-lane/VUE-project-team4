@@ -7,3 +7,10 @@ import EditProfile from '../components/EditProfile.vue';
     <EditProfile />
   </main>
 </template>
+<script>
+
+</script>
+<style>
+
+
+</style>

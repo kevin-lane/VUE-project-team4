@@ -103,4 +103,7 @@ a:hover {
   column-gap: 10px;
   margin-left: 78%;
 }
+#container {
+  height: 100%;
+}
 </style>
