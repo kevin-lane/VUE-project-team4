@@ -1,13 +1,12 @@
 <script setup>
 import HeroSection from './components/HeroSection.vue'
-import NavBar from './components/NavBar.vue'
-import PopupWindow from './components/PopupWindow.vue';
+
+import desktopNav from './components/DesktopNav.vue'
 </script>
 
 <template>
-  <NavBar />
-  <HeroSection/>
-  <PopupWindow />
+<HeroSection/>
+<desktopNav/>
 </template>
 
 <style scoped>
