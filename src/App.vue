@@ -1,12 +1,10 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import NavbarMobile from './components/NavbarMobile.vue'
+import EditProfile from './components/EditProfile.vue';
 </script>
 
 <template>
-    <NavbarMobile />
+    <EditProfile />
 
-    <RouterView />
 </template>
 
 <style scoped>

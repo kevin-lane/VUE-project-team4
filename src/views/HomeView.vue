@@ -1,14 +1,16 @@
 <script setup>
-  import LoginForm from '../components/LoginForm.vue';
-  import CreateAccount from '../components/CreateAccount.vue';
-  import CartPaymentDesktop from '../components/CartPaymentDesktop.vue';
+import EditProfile from '../components/EditProfile.vue';
 </script>
 
 <template>
   <main>
-    <h1>Instabuy</h1>
-    <CartPaymentDesktop />
-    <LoginForm />
-    <CreateAccount />
+    <EditProfile />
   </main>
 </template>
+<script>
+
+</script>
+<style>
+
+
+</style>
