@@ -1,14 +1,14 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import mainCards from './components/mainCards.vue'
+import HeroSection from './components/HeroSection.vue'
+import NavBar from './components/NavBar.vue'
+import PopupWindow from './components/PopupWindow.vue';
 </script>
 
 <template>
-
-
-  <RouterView />
+  <NavBar />
+  <HeroSection/>
+  <PopupWindow />
 </template>
 
 <style scoped>
-
 </style>
