@@ -37,7 +37,7 @@ export default {//Export default
 };
 </script>
 
-<style>/* //Oscar */
+<style scoped>/* //Oscar */
  *,
 *::before,
 *::after {
