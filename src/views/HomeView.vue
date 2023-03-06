@@ -1,12 +1,11 @@
 <script setup>
-import mainCards from '../components/mainCards.vue'
-
-
+import EditProfile from '../components/EditProfile.vue';
 </script>
 
 <template>
-<mainCards/>
-
+  <main>
+    <EditProfile />
+  </main>
 </template>
 <script>
 

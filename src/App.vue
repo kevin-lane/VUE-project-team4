@@ -1,14 +1,9 @@
 <script setup>
-import HeroSection from './components/HeroSection.vue'
-import NavBar from './components/NavBar.vue'
+import EditProfile from './components/EditProfile.vue';
 </script>
 
 <template>
-
-  <HeroSection />
-  <NavBar />
-
-
+    <EditProfile />
 
 </template>
 
