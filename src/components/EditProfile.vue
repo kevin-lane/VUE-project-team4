@@ -48,11 +48,16 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Arial';
 }
 
 body {
     height: 100%;
     padding: 120px 0px;
+}
+
+input {
+    outline: none;
 }
 
 .wrapper {
@@ -158,7 +163,7 @@ img {
 }
 
 .cancel {
-    border: 1 px solid gray;
+    border: none;
     font-weight: lighter;
     font-size: 16px;
     color: rgb(61, 61, 61);
@@ -181,7 +186,7 @@ img {
 }
 
 .edit-profile {
-    border: 1 px solid gray;
+    border: none;
     font-weight: lighter;
     font-size: 10px;
     color: rgb(61, 61, 61);
