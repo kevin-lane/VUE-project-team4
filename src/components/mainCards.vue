@@ -16,19 +16,19 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
         <button class="gillaknapp"></button>
-        <button class="köpknapp" @click="showContainer = true">Köp</button>
+        <button class="köpknapp" @click="showContainer = true">Köp</button><!--visar popupprompt fönstret-->
 
 
       </div>
 
     <!-- </div> -->
-    <div v-if="showContainer" class="container">
+    <div v-if="showContainer" class="container"><!-- V-if för att visa/dölja "popupprompten" -->
       <p>Är du säker att du vill fortsätta till kassan</p>
       <SquaredQuestionMark />
       <div class="button-container">
-        <button id="left-button" class="buttons" @click="showContainer = false">Avbryt</button>
+        <button id="left-button" class="buttons" @click="showContainer = false">Avbryt</button><!--döljer popupprompt fönstret-->
         <router-link to="/checkout" custom v-slot="{ navigate }">
-          <button @click="navigate" role="link" id="right-button" class="buttons">Fortsätt</button>
+          <button @click="navigate" role="link" id="right-button" class="buttons">Fortsätt</button><!--Routerlink som navigerar till checkout-->
         </router-link>
       </div>
     </div>
@@ -40,7 +40,7 @@ export default {//Export default
   data() {
     return {
       products: [],//returnar array från array med information som vi bygger "cardsen" med
-      showContainer: false,
+      showContainer: false,//showcontainer false gör så att popupprompten är döljd fdrån start
     };
   },
   mounted() {
@@ -50,12 +50,7 @@ export default {//Export default
         this.products = data;
       });
   },
-  methods: {
-    navigateToCheckout() {
-      // Perform any necessary actions before navigating to the checkout page
-      this.$router.push('/checkout');
-    },
-  },
+
 };
 
 </script>

@@ -5,7 +5,9 @@
     <br>
     <input class="input-forms" type="password" placeholder="Password">
     <br>
-    <a id="create-account-link" class="links" href="">Create an account</a>
+
+    <router-link to="/createacc"><a id="create-account-link" class="links" href="">Create an account</a></router-link>
+
     <br>
     <button id="login-button">Login</button><br>
     <a class="links" href="">Forgot Password?</a>
