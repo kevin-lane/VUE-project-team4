@@ -8,7 +8,7 @@
 
 <style scoped>
 .background {
-    background-image: url("/public/Background-desktop-opac3.png");
+    background-image: url("/Background-desktop-opac3.png");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;

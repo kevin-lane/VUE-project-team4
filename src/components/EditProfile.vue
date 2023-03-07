@@ -34,10 +34,14 @@
         </div>
         <div class="bottom">
             <div class="bottom-left">
-                <button class="cancel">Cancel</button>
+                <router-link to="/profile" custom v-slot="{ navigate }">
+                    <button @click="navigate" role="link" class="cancel">Cancel</button>
+                </router-link>
             </div>
             <div class="bottom-right">
-                <button class="save">Done</button>
+                <router-link to="/profile" custom v-slot="{ navigate }">
+                    <button @click="navigate" role="link" class="save">Done</button>
+                </router-link>
             </div>
         </div>
     </div>

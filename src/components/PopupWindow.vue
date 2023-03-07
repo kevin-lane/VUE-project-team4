@@ -7,12 +7,16 @@
     <p>Är du säker att du vill fortsätta till kassan</p>
     <SquaredQuestionMark />
     <div class="button-container">
-      <button id="left-button" class="buttons">Avbryt</button>
-      <button id="right-button" class="buttons">Fortsätt</button>
+      <button id="left-button" class="buttons" >Avbryt</button>
+      <router-link to="/checkout" custom v-slot="{ navigate }">
+                    <button @click="navigate" role="link" id="right-button" class="buttons">Fortsätt</button>
+                </router-link>
     </div>
   </div>
 </template>
+<script>
 
+</script>
 <style scoped>
   .container{
     position: relative;
