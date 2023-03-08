@@ -1,13 +1,50 @@
+<script>
+  export default{
+    data(){
+      return {
+        email: '',
+        password: ''
+      }
+    },
+    methods: {
+      fetchUser(e){
+        e.preventDefault();
+        console.log("Logged in");
+        fetch("../public/users.json")
+        .then(response => response.json())
+        .then(response => console.log(JSON.stringify(response[0])))
+      },
+      loginUser(e){
+        e.preventDefault();
+        fetch("../public/users.json")
+        .then(response => response.json())
+        .then(response =>{
+          console.log(JSON.stringify(response[0]));
+          console.log(this.email);
+          console.log(this.password);
+          console.log(response);
+          if (this.email === response[0].email && this.password === response[0].password) {
+            console.log("Logged in")
+          }
+          else{
+            console.log("Wrong email or password")
+          }
+        })
+      }
+    }
+  }
+</script>
+
 <template>
   <form id="login-form">
     <h1>Sign in</h1>
-    <input class="input-forms" type="email" placeholder="Email Address">
+    <input v-model="email" class="input-forms" type="email" placeholder="Email Address">
     <br>
-    <input class="input-forms" type="password" placeholder="Password">
+    <input v-model="password" class="input-forms" type="password" placeholder="Password">
     <br>
-    <a id="create-account-link" class="links" href="">Create an account</a>
+    <a @click.prevent="$store.commit('createAccount', true)" id="create-account-link" class="links" href="">Create an account</a>
     <br>
-    <button id="login-button">Login</button><br>
+    <button @click="loginUser" id="login-button">Login</button><br>
     <a class="links" href="">Forgot Password?</a>
   </form>
 </template>
@@ -39,7 +76,7 @@
   }
   #create-account-link{
     position: absolute;
-    right: 2rem;
+
   }
   #login-button{
     width: 214px;

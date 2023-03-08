@@ -1,18 +1,42 @@
+<script>
+  export default{
+    data(){
+      return{
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmedPassword: ''
+      }
+    },
+    methods: {
+      addNewUser(){
+        if (this.password !== this.confirmedPassword) {
+          alert("Password and confirmed password don't match");
+        }
+        else{
+          alert("New user added");
+        }
+      }
+    }
+  }
+</script>
+
 <template>
   <form id="signup-form">
     <h1>Sign up</h1>
-    <input class="input-forms" type="text" placeholder="First Name">
+    <input v-model="firstName" class="input-forms" type="text" placeholder="First Name" required>
     <br>
-    <input class="input-forms" type="text" placeholder="Last Name">
+    <input v-model="lastName" class="input-forms" type="text" placeholder="Last Name" required>
     <br>
-    <input class="input-forms" type="email" placeholder="Email Address">
+    <input v-model="email" class="input-forms" type="email" placeholder="Email Address" required>
     <br>
-    <input class="input-forms" type="password" placeholder="Password">
+    <input v-model="password" class="input-forms" type="password" placeholder="Password" required>
     <br>
-    <input class="input-forms" type="password" placeholder="Confirm Password">
+    <input v-model="confirmedPassword" class="input-forms" type="password" placeholder="Confirm Password" required>
     <input type="checkbox" id="policy-approval" name="policy-approval" >
       <label id="policy-approval-label" for="policy-approval">I accept Terms and Privacy Policy</label>
-    <button id="signup-button">Sign up</button><br>
+    <button @click="addNewUser" id="signup-button">Sign up</button><br>
   </form>
 </template>
 
