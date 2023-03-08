@@ -54,17 +54,17 @@
     <div id="navBar">
       <ul>
         <li>
-          <i class="bi bi-telephone"> </i>
-          <a href=""> <h4>Tech</h4></a>
+          <i class="bi bi-lamp-fill"> </i>
+          <a href=""> <h4>Dekor</h4></a>
         </li>
         <li>
           <i class="bi bi-plus-square"></i>
-          <a href=""><h4>Health</h4></a>
+          <a href=""><h4>Hälsa</h4></a>
         </li>
 
         <li>
           <i class="bi bi-music-note"></i>
-          <a href=""> <h4>Music</h4></a>
+          <a href=""> <h4>Musik</h4></a>
         </li>
         <li>
           <i class="bi bi-dribbble"></i>
@@ -72,8 +72,8 @@
         </li>
 
         <li>
-          <i class="bi bi-train-front"></i>
-          <a href=""> <h4>Trip</h4></a>
+          <i class="bi bi-handbag-fill"></i>
+          <a href=""> <h4>Mode</h4></a>
         </li>
       </ul>
     </div>
@@ -81,7 +81,7 @@
   </div>
 </template>
 
-<script>
+<script >
 export default {
   data() {
     return {
@@ -208,9 +208,9 @@ a:hover {
   background-color: rgb(117, 117, 117);
   color: white;
 }
-h1 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 35px;
+h4 {
+  font-family: 'montserrat';
+  font-size: 14px;
   text-align: left;
   margin-left: 10px;
 }

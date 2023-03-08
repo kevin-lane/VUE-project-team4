@@ -11,7 +11,7 @@
 
     <router-link
         to="/editprofile" custom v-slot="{ navigate }">
-        <button @click="navigate" role="link" id="button">Redigera</button>
+        <button @click="navigate" role="link" id="button">Redigera Profil</button>
     </router-link>
     <hr>
     <div id="card-container">

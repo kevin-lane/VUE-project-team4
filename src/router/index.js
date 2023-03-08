@@ -6,6 +6,7 @@ import profilSida from '../views/profilSida.vue'
 import betalningSida from '../views/betalningSida.vue'
 import addAnnons from '../views/addAnnons.vue'
 import editProf from '../views/editProf.vue'
+import createAcc from '../views/createAcc.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,11 @@ const router = createRouter({
       path: '/',
       name: 'signin',
       component: inloggningSida
+    },
+    {
+      path: '/createacc',
+      name: 'createacc',
+      component: createAcc
     },
     {
       path: '/home',
