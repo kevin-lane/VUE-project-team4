@@ -7,3 +7,7 @@ import WishList from '../components/WishList.vue'
 <style>
 
 </style>
+
+<script>
+
+</script>

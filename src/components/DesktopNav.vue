@@ -1,18 +1,34 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 </script>
+<script>
+export default {
+  data() {
+    return {
+      screen: window.innerWidth
+    }
+  },
+  mounted() {
+    window.addEventListener('resize', this.onScreenResize)
+  },
+  methods: {
+   onScreenResize() {
+      this.screen = window.innerWidth
+    }
+  }
+}
+</script>
 
 <template>
 
     <!-- Create nav bar  -->
       <!-- Using bootstrap template and icons -->
 
-  <div class="nav">
+  <div class="nav" v-if="screen >= 730">
+    <h1><router-link to="/home" >Instabuy</router-link></h1>
     <nav class="navbar navbar-light fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <h1>Instabuy</h1>
-        </a>
+
           <!-- Nav bar search item and liked items icons  -->
         <div id="icons">
           <router-link to="/wishlist"><i class="bi-suit-heart"></i></router-link>
@@ -63,13 +79,17 @@ import { RouterLink, RouterView } from 'vue-router'
       </div>
     </nav>
   </div>
-<!-- TEST FÖR HELVETE -->
-  <!-- <nav class="navbar">
-        <a class="active" href="#"><i class="bi bi-house-fill"></i> </a>
+
+  <div v-if="screen <= 730">
+   <h1><router-link to="/home" >Instabuy</router-link></h1>
+   <nav class="navbar">
+
+        <router-link to="/home"><i class="bi bi-house-fill"></i> </router-link>
         <router-link to=""><i class="bi bi-search"></i> </router-link>
         <router-link to="/add"><i class="bi bi-plus-lg"></i> </router-link>
         <router-link to="/profil"><i class="bi bi-person-fill"></i> </router-link>
-    </nav> -->
+    </nav>
+  </div>
 
   <router-view/>
 
@@ -80,6 +100,10 @@ import { RouterLink, RouterView } from 'vue-router'
 
 
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css');
+/* Query for desktop */
+@media screen and (min-width: 730px) {
+
+
 ul {
   list-style: none;
 }
@@ -97,13 +121,11 @@ a:link {
   text-decoration: none;
 }
 
+
 .bi:hover {
   cursor: pointer;
 }
-/* a:hover {
-  background-color: rgb(117, 117, 117);
-  color: white;
-} */
+
 h1 {
   text-align: left;
   margin-left: 10px;
@@ -121,6 +143,7 @@ h1 {
   padding: 20px;
 }
 
+
 #navBar {
   margin-top: 100px;
 }
@@ -128,8 +151,12 @@ h1 {
 #icons {
   display: flex;
   column-gap: 10px;
-  margin-left: 78%;
+  margin-left: 90%;
+
+
 }
+
+
 
 .navbar-toggler,
 .navbar-toggler:focus,
@@ -140,7 +167,9 @@ h1 {
     box-shadow: none;
 }
 
-/* @media screen and (max-width: 730px) {
+}
+/* Query for mobile */
+@media screen and (max-width: 730px) {
 
   .navbar {
     overflow: hidden;
@@ -160,8 +189,16 @@ h1 {
     font-size: 17px;
     text-align: center;
 }
+h1{
+  text-align: center;
+  margin-top: 2vh;
+}
 
-} */
+a{
+  text-decoration: none;
+  color: black;
+}
+}
 
 
 

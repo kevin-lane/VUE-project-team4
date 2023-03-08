@@ -3,7 +3,7 @@
 
 <template>
     <div id="product-container"><!--//Oscar-->
-    <div v-for="product in products" :key="product.id" class="card" :class="product.filter"><!--Loopar igenom products.json arrayen och renderar varje product som ett "card"--><!--v-for, v-bind-->
+    <div v-for="product, index in products" :key="product.id" class="card" :class="product.filter"><!--Loopar igenom products.json arrayen och renderar varje product som ett "card"--><!--v-for, v-bind-->
       <div class="bildcard">
         <img :src="product.picture" :alt="product.title" class="cardimage" /><!--Använder v-bind för att binda product taggarna med respektive css klass-->
         <p class="profilName">{{ product.profilName }}</p>
@@ -14,7 +14,7 @@
         <p class="infotitel">Info:</p>
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
-        <button class="gillaknapp"></button>
+        <button @click="emitWish(index)" class="gillaknapp"></button>
         <button class="köpknapp">Köp</button>
       </div>
     </div>
@@ -22,9 +22,11 @@
 </template>
 <script scoped>//Oscar
 export default {//Export default
+  emits: ['wishlist'],
   data() {
     return {
       products: [],//returnar array från array med information som vi bygger "cardsen" med
+      info: null
     };
   },
   mounted() {
@@ -32,8 +34,16 @@ export default {//Export default
       .then((response) => response.json())
       .then((data) => {
         this.products = data;
+        this.info = data;
       });
   },
+  methods: {
+  emitWish(i){
+    this.$emit('wishlist', { image: this.info[i].picture, price: this.info[i].price})
+
+
+  }
+}
 };
 </script>
 

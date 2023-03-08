@@ -1,34 +1,31 @@
-<script></script>
+<script scoped>
+    export default{
+        props: [ 'wishes' ],
+        data(){
+            return {
+                listItems: null
+            }
+        },
+        mounted(){
+            fetch("products.json")
+            .then((response) => response.json())
+            .then((result) => {
+                this.listItems = result;
+            })
+        }
+}
+</script>
 
 <template>
     <section class="wishlist-card">
         <div class="head">
             <h2>Wishlist</h2>
+            <p>{{ wishes }}</p>
         </div>
         <div class="grid">
-            <div class="div-card">
-                <img src="14331900004.jpg" alt="">
-                <h4>$18.00</h4>
-            </div>
-            <div class="div-card">
-                <img src="14331900004.jpg" alt="">
-                <h4>$18.00</h4>
-            </div>
-            <div class="div-card">
-                <img src="14331900004.jpg" alt="">
-                <h4>$18.00</h4>
-            </div>
-            <div class="div-card">
-                <img src="14331900004.jpg" alt="">
-                <h4>$18.00</h4>
-            </div>
-            <div class="div-card">
-                <img src="14331900004.jpg" alt="">
-                <h4>$18.00</h4>
-            </div>
-            <div class="div-card">
-                <img src="14331900004.jpg" alt="">
-                <h4>$18.00</h4>
+            <div class="div-card" v-for="wish in wishes">
+                <img :src="wishes.image" alt="Error">
+                <h4>{{ wishes.price }}</h4>
             </div>
 
 
@@ -45,6 +42,7 @@
     border-radius: 6px;
     margin: auto;
     box-shadow: 1px 2px 2px  rgb(205, 204, 204);margin-top: 15vh;
+    padding-bottom: 10px;
 
 }
 
