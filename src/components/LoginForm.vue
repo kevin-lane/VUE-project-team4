@@ -19,17 +19,29 @@
         fetch("../public/users.json")
         .then(response => response.json())
         .then(response =>{
-          console.log(JSON.stringify(response[0]));
-          console.log(this.email);
-          console.log(this.password);
-          console.log(response);
-          if (this.email === response[0].email && this.password === response[0].password) {
-            console.log("Logged in")
-          }
-          else{
-            console.log("Wrong email or password")
-          }
+          response.find(usr => {
+            if (usr.email === this.email && usr.password === this.password) {
+              alert("Logged in");
+              this.$store.commit('userLogin', true);
+            }
+            else{
+              document.getElementById('wrong-login-details').style.visibility = 'visible'
+            }
+          });
         })
+      }
+    },
+    //Watcher inplemented to get rid of Wrong log in details when user starts typing
+    watch: {
+      email(newVal, oldVal){
+        if(newVal !== oldVal){
+          document.getElementById('wrong-login-details').style.visibility = 'hidden'
+        }
+      },
+      password(newVal, oldVal){
+        if(newVal !== oldVal){
+          document.getElementById('wrong-login-details').style.visibility = 'hidden'
+        }
       }
     }
   }
@@ -44,8 +56,9 @@
     <br>
     <a @click.prevent="$store.commit('createAccount', true)" id="create-account-link" class="links" href="">Create an account</a>
     <br>
-    <button @click="loginUser" id="login-button">Login</button><br>
+    <button @click.prevent="loginUser" id="login-button">Login</button><br>
     <a class="links" href="">Forgot Password?</a>
+    <p id="wrong-login-details">Wrong email or password</p>
   </form>
 </template>
 
@@ -87,5 +100,9 @@
     border: 1px;
     color: white;
     font-size: 20px;
+  }
+  #wrong-login-details{
+    visibility: hidden;
+    color: rgb(200, 255, 0);
   }
 </style>
