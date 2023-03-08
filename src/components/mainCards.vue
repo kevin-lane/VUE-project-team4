@@ -15,10 +15,6 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
         <p class="infotitel">Info:</p>
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
-<<<<<<< HEAD
-        <button @click="emitWish(index)" class="gillaknapp"></button>
-        <button class="köpknapp">Köp</button>
-=======
         <button class="gillaknapp"></button>
         <button class="köpknapp" @click="showContainer = true">Köp</button><!--visar popupprompt fönstret-->
 
@@ -34,7 +30,6 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
         <router-link to="/checkout" custom v-slot="{ navigate }">
           <button @click="navigate" role="link" id="right-button" class="buttons">Fortsätt</button><!--Routerlink som navigerar till checkout-->
         </router-link>
->>>>>>> OscarStriger
       </div>
     </div>
   </div>
@@ -46,11 +41,7 @@ export default {//Export default
   data() {
     return {
       products: [],//returnar array från array med information som vi bygger "cardsen" med
-<<<<<<< HEAD
-      info: null
-=======
       showContainer: false,//showcontainer false gör så att popupprompten är döljd fdrån start
->>>>>>> OscarStriger
     };
   },
   mounted() {
@@ -61,17 +52,6 @@ export default {//Export default
         this.info = data;
       });
   },
-<<<<<<< HEAD
-  methods: {
-  emitWish(i){
-    this.$emit('wishlist', { image: this.info[i].picture, price: this.info[i].price})
-
-
-  }
-}
-=======
-
->>>>>>> OscarStriger
 };
 
 </script>
