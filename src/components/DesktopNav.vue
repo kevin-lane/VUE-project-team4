@@ -31,7 +31,8 @@ export default {
 
           <!-- Nav bar search item and liked items icons  -->
         <div id="icons">
-          <router-link to="/wishlist"><i class="bi-suit-heart"></i></router-link>
+          <router-link v-if="$store.state.wishClass == false" to="/wishlist"><i class="bi-suit-heart"></i></router-link>
+          <router-link v-else to="/wishlist"><i class="bi-suit-heart" id="red"></i></router-link>
           <a href=""> <i class="bi-search"></i></a>
         </div>
         <!-- Hamburger menu button starts here   -->
@@ -156,6 +157,10 @@ h1 {
 
 }
 
+#red{
+  color:red
+}
+
 
 
 .navbar-toggler,
@@ -179,6 +184,7 @@ h1 {
     left: 0;
     width: 100%;
     text-align: center;
+    z-index: 2;
 }
 
 .navbar a {

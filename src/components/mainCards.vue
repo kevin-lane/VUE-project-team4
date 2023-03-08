@@ -15,7 +15,7 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
         <p class="infotitel">Info:</p>
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
-        <button class="gillaknapp"></button>
+        <button class="gillaknapp" @click="$store.commit('storeWish', product)" :class="index"></button>
         <button class="köpknapp" @click="showContainer = true">Köp</button><!--visar popupprompt fönstret-->
 
 
@@ -37,11 +37,11 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
 </template>
 <script scoped>//Oscar
 export default {//Export default
-  emits: ['wishlist'],
   data() {
     return {
       products: [],//returnar array från array med information som vi bygger "cardsen" med
       showContainer: false,//showcontainer false gör så att popupprompten är döljd fdrån start
+      heartColor: { color: 'red'}
     };
   },
   mounted() {
@@ -49,9 +49,9 @@ export default {//Export default
       .then((response) => response.json())
       .then((data) => {
         this.products = data;
-        this.info = data;
       });
   },
+
 };
 
 </script>

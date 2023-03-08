@@ -1,18 +1,13 @@
 <script scoped>
     export default{
-        props: [ 'wishes' ],
         data(){
             return {
-                listItems: null
+                itemsPrice: this.$store.state.productPrice,
+                itemPicture: this.$store.state.productPicture
             }
-        },
-        mounted(){
-            fetch("products.json")
-            .then((response) => response.json())
-            .then((result) => {
-                this.listItems = result;
-            })
+
         }
+
 }
 </script>
 
@@ -20,12 +15,18 @@
     <section class="wishlist-card">
         <div class="head">
             <h2>Wishlist</h2>
-            <p>{{ wishes }}</p>
         </div>
+        <div id="warn" v-if="$store.state.wishClass == false">
+                <h3>There are no liked adds here at the moment...</h3>
+            </div>
         <div class="grid">
-            <div class="div-card" v-for="wish in wishes">
-                <img :src="wishes.image" alt="Error">
-                <h4>{{ wishes.price }}</h4>
+
+            <div class="div-card" v-for="item, index in itemsPrice">
+                <img :src="itemPicture[index]" :alt="index + 1">
+                <div class="card-container">
+                    <h4>{{ item }}</h4>
+                    <button @click="$store.commit('removeWish', index)" class="remove-btn">Remove</button>
+                </div>
             </div>
 
 
@@ -75,6 +76,25 @@ img{
     border-radius: 6px;
 }
 
+#warn {
+    text-align: center;
+    margin-top: 40px;
+}
+.remove-btn {
+    border-style: none;
+    background-color: white;
+    font-size: 14px;
+    margin-bottom: 20px;
+    padding: 0;
+    font-weight: 600;
+
+
+}
+.card-container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1vh;
+}
 @media screen and (max-width: 720px) {
 
 .wishlist-card{

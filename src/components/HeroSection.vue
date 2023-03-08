@@ -25,7 +25,7 @@
 @media screen and (max-width: 720px) {
 
  .background {
-    background-image: url("/public/Background-mobile-small-opac.png");
+    background-image: url("/Background-mobile-small-opac.png");
     min-width: 100%;
     min-height: 100%;
  }
