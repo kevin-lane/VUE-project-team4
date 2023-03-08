@@ -1,10 +1,12 @@
 <script setup>
-import EditProfile from './components/EditProfile.vue';
+  import HeroSection from './components/HeroSection.vue'
+  import NavBar from './components/NavBar.vue'
 </script>
 
 <template>
-    <EditProfile />
-
+  <HeroSection />
+  <NavBar />
+  <RouterView></RouterView>
 </template>
 
 <style scoped>
