@@ -184,7 +184,7 @@ h1 {
     left: 0;
     width: 100%;
     text-align: center;
-    z-index: 2;
+    z-index: 0;
 }
 
 .navbar a {
