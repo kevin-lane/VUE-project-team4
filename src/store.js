@@ -4,6 +4,11 @@ const mutations = {
   createAccount(state, newUser){
     state.newUser = newUser;
   },
+  
+  userLogin(state, loggedIn){
+    state.loggedIn = loggedIn;
+  },
+  
   storeWish(state, product){
   state.productPicture.push(product.picture);
   state.productPrice.push(product.price);
@@ -15,7 +20,7 @@ const mutations = {
 
   if(state.productPrice.length < 1){
     state.wishClass = false;
-  }
+    }
   }
 };
 
