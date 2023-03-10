@@ -1,3 +1,18 @@
+<script>
+
+export default {
+    data() {
+        return {}
+    },
+    methods: {
+        onClick() {
+            console.log(this.userName)
+        }
+    }
+}
+
+</script>
+
 <template>
     <div class="wrapper">
         <div class="top">
@@ -9,7 +24,7 @@
             </div>
             <div class="top-right">
                 <div class="container">
-                    <button class="edit-profile">Edit Profile</button>
+                    <button @click class="edit-profile">Edit Profile</button>
                 </div>
             </div>
         </div>
@@ -110,6 +125,10 @@ img {
     margin: auto;
 }
 
+.save,
+.cancel {
+    visibility: hidden;
+}
 
 .top-right {
     width: 70%;
