@@ -1,11 +1,12 @@
+
 <script setup>
-import EditProfile from './components/EditProfile.vue';
+import { RouterLink, RouterView } from 'vue-router'
+import HeroSection from './components/HeroSection.vue'
+import desktopNav from './components/DesktopNav.vue'
 </script>
 
 <template>
-    <EditProfile />
+<HeroSection/>
+<desktopNav/>
 
 </template>
-
-<style scoped>
-</style>

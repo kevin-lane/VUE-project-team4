@@ -1,16 +1,38 @@
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+</script>
+<script>
+export default {
+  data() {
+    return {
+      screen: window.innerWidth
+    }
+  },
+  mounted() {
+    window.addEventListener('resize', this.onScreenResize)
+  },
+  methods: {
+   onScreenResize() {
+      this.screen = window.innerWidth
+    }
+  }
+}
+</script>
+
 <template>
 
     <!-- Create nav bar  -->
       <!-- Using bootstrap template and icons -->
-  <div class="nav">
-    <nav class="navbar navbar-light bg-light fixed-top">
+
+  <div class="nav" v-if="screen >= 730">
+    <h1><router-link to="/home" >Instabuy</router-link></h1>
+    <nav class="navbar navbar-light fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <h1>Instabuy</h1>
-        </a>
+
           <!-- Nav bar search item and liked items icons  -->
         <div id="icons">
-          <a href=""><i class="bi-suit-heart"></i></a>
+          <router-link v-if="$store.state.wishClass == false" to="/wishlist"><i class="bi-suit-heart"></i></router-link>
+          <router-link v-else to="/wishlist"><i class="bi-suit-heart" id="red"></i></router-link>
           <a href=""> <i class="bi-search"></i></a>
         </div>
         <!-- Hamburger menu button starts here   -->
@@ -42,32 +64,16 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <router-link class="nav-link" to="/home">Home</router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <router-link class="nav-link" to="/profile">Profile</router-link>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#">Create post</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Wishlist</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Inbox</a>
+                <router-link class="nav-link" to="/add">Create post</router-link>
               </li>
 
-                <!-- Search bar  -->
-              <form class="d-flex" role="search">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
             </ul>
           </div>
         </div>
@@ -75,64 +81,30 @@
     </nav>
   </div>
 
+  <div v-if="screen <= 730">
+   <h1><router-link to="/home" >Instabuy</router-link></h1>
+   <nav class="navbar">
 
-    <!-- Nav bar category starts here  -->
-  <div id="container">
-    <div id="navBar">
-      <ul>
-        <li>
-          <i class="bi bi-lamp-fill"></i>
-          <a href="">Furniture </a>
-        </li>
-        <li>
-          <i class="bi bi-plus-square-fill"></i>
-          <a href=""> Health</a>
-        </li>
-
-        <li>
-          <i class="bi bi-music-note"></i>
-          <a href=""> Music</a>
-        </li>
-        <li>
-          <i class="bi bi-hypnotize"></i>
-          <a href=""> Sport</a>
-        </li>
-
-        <li>
-          <i class="bi bi-train-front-fill"></i>
-          <a href=""> Trip</a>
-        </li>
-
-        <li>
-          <i class="bi bi-handbag-fill"></i>
-          <a href=""> Fashion</a>
-        </li>
-
-        <li>
-          <i class="bi bi-cup-hot-fill"></i>
-          <a href=""> Leisure</a>
-        </li>
-
-        <li>
-          <i class="bi bi-gem"></i>
-          <a href=""> Jewelry</a>
-        </li>
-
-        <li>
-          <i class="bi bi-grid-3x3-gap-fill"></i>
-          <a href="">Other </a>
-        </li>
-      </ul>
-    </div>
+        <router-link to="/home"><i class="bi bi-house-fill"></i> </router-link>
+        <router-link to=""><i class="bi bi-search"></i> </router-link>
+        <router-link to="/add"><i class="bi bi-plus-lg"></i> </router-link>
+        <router-link to="/profil"><i class="bi bi-person-fill"></i> </router-link>
+    </nav>
   </div>
+
+  <router-view/>
+
 </template>
 
-<script></script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap');
+
 
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css');
+/* Query for desktop */
+@media screen and (min-width: 730px) {
+
+
 ul {
   list-style: none;
 }
@@ -150,16 +122,12 @@ a:link {
   text-decoration: none;
 }
 
+
 .bi:hover {
   cursor: pointer;
 }
-a:hover {
-  background-color: rgb(117, 117, 117);
-  color: white;
-}
+
 h1 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 35px;
   text-align: left;
   margin-left: 10px;
 }
@@ -176,6 +144,7 @@ h1 {
   padding: 20px;
 }
 
+
 #navBar {
   margin-top: 100px;
 }
@@ -183,6 +152,63 @@ h1 {
 #icons {
   display: flex;
   column-gap: 10px;
-  margin-left: 78%;
+  margin-left: 90%;
+
+
 }
+
+#red{
+  color:red
+}
+
+
+
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+}
+/* Query for mobile */
+@media screen and (max-width: 730px) {
+
+  .navbar {
+    overflow: hidden;
+    background-color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+
+.navbar a {
+    display: inline-block;
+    color: #2c2c2c;
+    padding: 16px 25px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+}
+h1{
+  text-align: center;
+  margin-top: 2vh;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+}
+
+
+
+
+
+
 </style>

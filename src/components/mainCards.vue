@@ -1,9 +1,10 @@
 <script setup>
+import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
 </script>
 
 <template>
     <div id="product-container"><!--//Oscar-->
-    <div v-for="product in products" :key="product.id" class="card" :class="product.filter"><!--Loopar igenom products.json arrayen och renderar varje product som ett "card"--><!--v-for, v-bind-->
+    <div v-for="product, index in products" :key="product.id" class="card" :class="product.filter"><!--Loopar igenom products.json arrayen och renderar varje product som ett "card"--><!--v-for, v-bind-->
       <div class="bildcard">
         <img :src="product.picture" :alt="product.title" class="cardimage" /><!--Använder v-bind för att binda product taggarna med respektive css klass-->
         <p class="profilName">{{ product.profilName }}</p>
@@ -14,10 +15,24 @@
         <p class="infotitel">Info:</p>
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
-        <button class="gillaknapp"></button>
-        <button class="köpknapp">Köp</button>
+        <button class="gillaknapp" @click="$store.commit('storeWish', product)" :class="index"></button>
+        <button class="köpknapp" @click="showContainer = true">Köp</button><!--visar popupprompt fönstret-->
+
+
+      </div>
+
+    <!-- </div> -->
+    <div v-if="showContainer" class="container"><!-- V-if för att visa/dölja "popupprompten" -->
+      <p>Är du säker att du vill fortsätta till kassan</p>
+      <SquaredQuestionMark />
+      <div class="button-container">
+        <button id="left-button" class="buttons" @click="showContainer = false">Avbryt</button><!--döljer popupprompt fönstret-->
+        <router-link to="/checkout" custom v-slot="{ navigate }">
+          <button @click="navigate" role="link" id="right-button" class="buttons">Fortsätt</button><!--Routerlink som navigerar till checkout-->
+        </router-link>
       </div>
     </div>
+  </div>
   </div>
 </template>
 <script scoped>//Oscar
@@ -25,6 +40,8 @@ export default {//Export default
   data() {
     return {
       products: [],//returnar array från array med information som vi bygger "cardsen" med
+      showContainer: false,//showcontainer false gör så att popupprompten är döljd fdrån start
+      heartColor: { color: 'red'}
     };
   },
   mounted() {
@@ -34,8 +51,11 @@ export default {//Export default
         this.products = data;
       });
   },
+
 };
+
 </script>
+
 
 <style scoped>/* //Oscar */
  *,
@@ -46,7 +66,42 @@ export default {//Export default
   position: relative;
   font-weight: normal;
 }
-
+.container{
+    position: fixed;
+    background-color: #D0F2CC;
+    width: 360px;
+    height: 200px;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .button-container{
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+  }
+  .buttons{
+    width: 95px;
+    height: 46px;
+    border-radius: 7px;
+    border: none;
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+  }
+  #left-button{
+    background-color: black;
+  }
+  #right-button{
+    background-color: #3AA05D;
+  }
  @media screen and (min-width: 800px){/*desktop */
   .card {
     display: block;
