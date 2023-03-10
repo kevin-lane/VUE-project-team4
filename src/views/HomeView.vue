@@ -1,16 +1,18 @@
 <script setup>
-import EditProfile from '../components/EditProfile.vue';
+  import mainCards from '../components/mainCards.vue'
+  import FilterComponent from '../components/FilterComponent.vue';
+
 </script>
 
 <template>
+
   <main>
-    <EditProfile />
+    <mainCards/>
+    <FilterComponent/>
   </main>
 </template>
 <script>
-
 </script>
 <style>
-
 
 </style>

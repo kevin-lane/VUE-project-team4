@@ -1,14 +1,64 @@
+<script>
+  export default{
+    data(){
+      return {
+        email: '',
+        password: ''
+      }
+    },
+    methods: {
+      fetchUser(e){
+        e.preventDefault();
+        console.log("Logged in");
+        fetch("../public/users.json")
+        .then(response => response.json())
+        .then(response => console.log(JSON.stringify(response[0])))
+      },
+      loginUser(e){
+        e.preventDefault();
+        fetch("../public/users.json")
+        .then(response => response.json())
+        .then(response =>{
+          response.find(usr => {
+            if (usr.email === this.email && usr.password === this.password) {
+              alert("Logged in");
+              this.$store.commit('userLogin', true);
+            }
+            else{
+              document.getElementById('wrong-login-details').style.visibility = 'visible'
+            }
+          });
+        })
+      }
+    },
+    //Watcher inplemented to get rid of Wrong log in details when user starts typing
+    watch: {
+      email(newVal, oldVal){
+        if(newVal !== oldVal){
+          document.getElementById('wrong-login-details').style.visibility = 'hidden'
+        }
+      },
+      password(newVal, oldVal){
+        if(newVal !== oldVal){
+          document.getElementById('wrong-login-details').style.visibility = 'hidden'
+        }
+      }
+    }
+  }
+</script>
+
 <template>
   <form id="login-form">
     <h1>Sign in</h1>
-    <input class="input-forms" type="email" placeholder="Email Address">
+    <input v-model="email" class="input-forms" type="email" placeholder="Email Address">
     <br>
-    <input class="input-forms" type="password" placeholder="Password">
+    <input v-model="password" class="input-forms" type="password" placeholder="Password">
     <br>
-    <a id="create-account-link" class="links" href="">Create an account</a>
+    <a @click.prevent="$store.commit('createAccount', true)" id="create-account-link" class="links" href="">Create an account</a>
     <br>
-    <button id="login-button">Login</button><br>
+    <button @click.prevent="loginUser" id="login-button">Login</button><br>
     <a class="links" href="">Forgot Password?</a>
+    <p id="wrong-login-details">Wrong email or password</p>
   </form>
 </template>
 
@@ -39,7 +89,7 @@
   }
   #create-account-link{
     position: absolute;
-    right: 2rem;
+
   }
   #login-button{
     width: 214px;
@@ -50,5 +100,9 @@
     border: 1px;
     color: white;
     font-size: 20px;
+  }
+  #wrong-login-details{
+    visibility: hidden;
+    color: rgb(200, 255, 0);
   }
 </style>
