@@ -2,12 +2,10 @@
 
 export default {
     data() {
-        return {}
+        return { showButton: false }
     },
     methods: {
-        onClick() {
-            console.log(this.userName)
-        }
+
     }
 }
 
@@ -24,35 +22,29 @@ export default {
             </div>
             <div class="top-right">
                 <div class="container">
-                    <button @click class="edit-profile">Edit Profile</button>
+                    <button @click="showButton = !showButton" class="edit-profile">Edit Profile</button>
                 </div>
             </div>
         </div>
         <div class="mid">
             <div class="container">
-                <div class="name">
-                    <input type="text" class="form" placeholder="Enter your first name:">
-                </div>
-                <div class="lastname">
-                    <input type="text" class="form" placeholder="Enter your last name:">
-                </div>
-                <div class="email">
-                    <input type="text" class="form" placeholder="Email:">
-                </div>
-                <div class="newpassword">
-                    <input type="text" class="form" placeholder="Old password:">
-                </div>
-                <div class="oldpassword">
-                    <input type="text" class="form" placeholder="New password:">
-                </div>
+                <form>
+                    <input v-model="firstName" class="form" placeholder="Enter your first name:">
+                    <input v-model="lastName" class=" form" placeholder="Enter your last name:">
+                    <input v-model="email" class="form" placeholder="Email:">
+                    <input v-model="newPass" class="form" placeholder="Old password:">
+                    <input v-model="oldPass" class="form" placeholder="New password:">
+                </form>
             </div>
         </div>
+
+
         <div class="bottom">
             <div class="bottom-left">
-                <button class="cancel">Cancel</button>
+                <button v-if="showButton" class="cancel">Cancel</button>
             </div>
             <div class="bottom-right">
-                <button class="save">Done</button>
+                <button v-if="showButton" class="save">Done</button>
             </div>
         </div>
     </div>
@@ -126,9 +118,7 @@ img {
 }
 
 .save,
-.cancel {
-    visibility: hidden;
-}
+.cancel {}
 
 .top-right {
     width: 70%;
