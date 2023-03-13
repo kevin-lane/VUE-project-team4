@@ -22,7 +22,7 @@ export default {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ data: this.firstName })
+                body: JSON.stringify({})
             })
                 .then(response => response.json())
                 .then(data => console.log(data))
@@ -41,7 +41,7 @@ export default {
         <div class="top">
             <div class="top-left">
                 <div class="container">
-                    <img src="dj.jpg" alt="" class="profile-pic">
+                    <img src="" alt="" class="profile-pic">
                     <button class="upload">Upload New Image</button>
                 </div>
             </div>
