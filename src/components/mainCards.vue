@@ -15,7 +15,9 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
         <p class="infotitel">Info:</p>
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
-        <button class="gillaknapp" @click="$store.commit('storeWish', product) && isActive === true" :class="{ active: isActive }"></button>
+        <button class="gillaknapp" @click=" active(index, product)" :class="{ active: isActive }"></button>
+        <!-- TESTA KEY????? -->
+        <!-- $store.commit('storeWish', product), -->
         <button class="köpknapp" @click="showContainer = true">Köp</button><!--visar popupprompt fönstret-->
 
 
@@ -49,8 +51,22 @@ export default {//Export default
       .then((response) => response.json())
       .then((data) => {
         this.products = data;
+
       });
   },
+  methods: {
+    active(index, product){
+      this.isActive = !this.isActive;
+      if(this.isActive == true) {
+        this.$store.commit('storeWish', product)
+        console.log("hello")
+      }
+      else{
+        this.$store.commit('removeWish', index);
+      console.log("world!")
+      }
+    }
+  }
 
 };
 
@@ -103,9 +119,7 @@ export default {//Export default
     background-color: #3AA05D;
   }
 
-  .gillaknapp active {
-    color: red;
-  }
+
  @media screen and (min-width: 800px){/*desktop */
   .card {
     display: block;
@@ -185,7 +199,6 @@ export default {//Export default
     right: 13.42%;
     top: 29.52%;
     bottom: 58.05%;
-
     background: url(../assets/cards-heart-outline.svg) no-repeat center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -247,6 +260,11 @@ export default {//Export default
     color: #000000;
   }
 }
+.active {
+  background-color: red;
+  border-radius:20px;
+}
+
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 @media screen and (max-width: 800px){/* mobile */
     .card {
@@ -401,6 +419,7 @@ export default {//Export default
 .card.hidden {
   display: none;
 }
+
 
 
 
