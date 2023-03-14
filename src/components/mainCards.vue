@@ -15,7 +15,7 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
         <p class="infotitel">Info:</p>
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
-        <button class="gillaknapp" @click=" active(index, product)" :class="{ active: isActive }"></button>
+        <button class="gillaknapp" @click=" active(index, product)" :class="{ active: index  }"></button>
         <!-- TESTA KEY????? -->
         <!-- $store.commit('storeWish', product), -->
         <button class="köpknapp" @click="showContainer = true">Köp</button><!--visar popupprompt fönstret-->
@@ -44,6 +44,8 @@ export default {//Export default
       products: [],//returnar array från array med information som vi bygger "cardsen" med
       showContainer: false,//showcontainer false gör så att popupprompten är döljd fdrån start
       isActive: false,
+      ListItem: [],
+
     };
   },
   mounted() {
@@ -57,14 +59,20 @@ export default {//Export default
   methods: {
     active(index, product){
       this.isActive = !this.isActive;
-      if(this.isActive == true) {
-        this.$store.commit('storeWish', product)
-        console.log("hello")
+
+
+        if(this.ListItem.includes(index)) {
+          this.ListItem.splice(index, 0)
+          console.log(this.ListItem)
+          this.$store.commit('removeWish', index);
+
       }
       else{
-        this.$store.commit('removeWish', index);
-      console.log("world!")
+        this.ListItem.push(index)
+        console.log(this.ListItem)
+        this.$store.commit('storeWish', product)
       }
+
     }
   }
 

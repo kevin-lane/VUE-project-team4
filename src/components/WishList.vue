@@ -112,6 +112,7 @@ img{
 img{
     height: 229px;
     border-radius: 6px;
+    object-fit: cover;
 
 }
 
