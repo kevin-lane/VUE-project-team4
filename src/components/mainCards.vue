@@ -15,7 +15,7 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
         <p class="infotitel">Info:</p>
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
-        <button class="gillaknapp" @click=" active(index, product)" :class="{ active: index  }"></button>
+        <button class="gillaknapp" @click=" active(index, product)" :class="{ active: ListItem.includes(index) }"></button>
         <!-- TESTA KEY????? -->
         <!-- $store.commit('storeWish', product), -->
         <button class="köpknapp" @click="showContainer = true">Köp</button><!--visar popupprompt fönstret-->
@@ -60,16 +60,17 @@ export default {//Export default
     active(index, product){
       this.isActive = !this.isActive;
 
+console.log(this.ListItem)
 
         if(this.ListItem.includes(index)) {
-          this.ListItem.splice(index, 0)
-          console.log(this.ListItem)
+          this.ListItem.pop()
+
           this.$store.commit('removeWish', index);
 
       }
       else{
         this.ListItem.push(index)
-        console.log(this.ListItem)
+
         this.$store.commit('storeWish', product)
       }
 
@@ -211,6 +212,7 @@ export default {//Export default
     background-repeat: no-repeat;
     background-size: contain;
     border: 0;
+
   }
   .köpknapp{
     box-sizing: border-box;
@@ -269,8 +271,10 @@ export default {//Export default
   }
 }
 .active {
-  background-color: red;
-  border-radius:20px;
+
+  background: url(../assets/cards-heart-outline-red.svg) no-repeat center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -363,6 +367,14 @@ export default {//Export default
     top: 11.83%;
     bottom: 72.72%;
   }
+
+  .active {
+
+  background: url(../assets/cards-heart-outline-red.svg) no-repeat center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
   .köpknapp{
     position: absolute;
     left: 79.2%;
