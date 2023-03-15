@@ -3,7 +3,8 @@
     data(){
       return {
         email: '',
-        password: ''
+        password: '',
+        userId: null
       }
     },
     methods: {
@@ -19,11 +20,17 @@
         fetch("http://localhost:3000/users")
         .then(response => response.json())
         .then(result =>{
-          console.log(result);
+          // console.log(result[0].id);
+          const loggedInUser = result.filter(user => user.email === this.email)
+          console.log(loggedInUser[0].id);
           result.find(usr => {
             if (usr.email === this.email && usr.password === this.password) {
               alert("Logged in");
-              this.$store.commit('userLogin', true);
+              this.$store.commit('userLogin', {
+                "loggedIn":true,
+                "loggedInUserId":loggedInUser[0].id
+              }
+              );
             }
             else{
               document.getElementById('wrong-login-details').style.visibility = 'visible'

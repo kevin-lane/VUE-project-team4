@@ -4,13 +4,16 @@ const mutations = {
   createAccount(state, newUser){
     state.newUser = newUser;
   },
-  userLogin(state, loggedIn){
+  userLogin(state, {loggedIn, loggedInUserId}){
     state.loggedIn = loggedIn;
+    state.loggedInUserId = loggedInUserId;
+    console.log(state.loggedInUserId);
   }
 },
 state = {
   newUser: false,
-  loggedIn: false
+  loggedIn: false,
+  loggedInUserId: null
 }
 
 //Uses strict: true
