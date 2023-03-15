@@ -16,6 +16,7 @@
         <div class="head">
             <h2>Wishlist</h2>
         </div>
+
         <div id="warn" v-if="$store.state.wishClass == false">
                 <h3>There are no liked adds here at the moment...</h3>
             </div>
@@ -112,6 +113,7 @@ img{
 img{
     height: 229px;
     border-radius: 6px;
+    object-fit: cover;
 
 }
 
