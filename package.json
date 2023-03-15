@@ -20,6 +20,8 @@
     "bootstrap-icons": "^1.10.3",
     "icons": "^1.0.0",
     "json-server": "^0.17.2",
+    "jquery": "^3.6.3",
+    "popper.js": "^1.16.1",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
     "vuex": "^4.0.2"

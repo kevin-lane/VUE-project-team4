@@ -8,7 +8,7 @@
 
 <style scoped>
 .background {
-    background-image: url("/public/Background-desktop-opac3.png");
+    background-image: url("/Background-desktop-opac3.png");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
@@ -25,7 +25,7 @@
 @media screen and (max-width: 720px) {
 
  .background {
-    background-image: url("/public/Background-mobile-small-opac.png");
+    background-image: url("/Background-mobile-small-opac.png");
     min-width: 100%;
     min-height: 100%;
  }

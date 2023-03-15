@@ -1,9 +1,9 @@
 <template>
     <nav class="navbar">
         <a class="active" href="#"><i class="bi bi-house-fill"></i> </a>
-        <a href="#"><i class="bi bi-search"></i> </a>
-        <a href="#"><i class="bi bi-plus-lg"></i> </a>
-        <a href="#"><i class="bi bi-person-fill"></i> </a>
+        <router-link to=""><i class="bi bi-search"></i> </router-link>
+        <router-link to="/add"><i class="bi bi-plus-lg"></i> </router-link>
+        <router-link to="/profil"><i class="bi bi-person-fill"></i> </router-link>
     </nav>
 </template>
 
@@ -31,5 +31,11 @@ body {
     text-decoration: none;
     font-size: 17px;
     text-align: center;
+}
+
+@media (hover: hover) {
+    a:hover {
+        background-color: hsla(160, 100%, 37%, 0.2);
+    }
 }
 </style>
