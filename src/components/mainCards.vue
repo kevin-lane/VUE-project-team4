@@ -44,8 +44,7 @@ export default {//Export default
       products: [],//returnar array från array med information som vi bygger "cardsen" med
       showContainer: false,//showcontainer false gör så att popupprompten är döljd fdrån start
       isActive: false,
-      ListItem: [],
-
+      ListItem: []
     };
   },
   mounted() {
@@ -57,13 +56,17 @@ export default {//Export default
       });
   },
   methods: {
+
     active(index, product){
       this.isActive = !this.isActive;
 
-console.log(this.ListItem)
+
+
+
 
         if(this.ListItem.includes(index)) {
-          this.ListItem.pop()
+          this.ListItem.splice(index , 1)
+
 
           this.$store.commit('removeWish', index);
 
@@ -72,6 +75,7 @@ console.log(this.ListItem)
         this.ListItem.push(index)
 
         this.$store.commit('storeWish', product)
+
       }
 
     }
