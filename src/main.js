@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import store from '../src/store'
 
 // imported bootstrap //
 import 'bootstrap/dist/css/bootstrap.css'
@@ -15,4 +16,6 @@ const app = createApp(App)
 
 app.use(router)
 app.use(bootstrap)
+app.use(store)
 app.mount('#app')
+

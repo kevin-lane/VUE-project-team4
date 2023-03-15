@@ -6,7 +6,7 @@
     "price": "99kr :-",
     "info": "Product 1 information, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ipsum odio, sagittis a volutpat non, semper in est. Fusce vel varius turpis. Sed nec lacinia mi. Morbi lacinia a felis quis gravida. Quisque ac porttitor tellus, ut varius neque. Vivamus in nisl sit amet neque molestie congue non eu tellus. In bibendum euismod velit, ut accumsan nisi gravida vel.",
     "picture": "https://s3-alpha-sig.figma.com/img/77f7/e052/e1aa6279ee4c9a8e9cc8ca6c449cfdd0?Expires=1678665600&Signature=UfoMWOqVZIWBmOjh2qHMJYb2Bfju1pcBFxUuS-2X19BsgXAJ4orBaeQPzQO2CNkSlGXcMXDTLZ8PkjD127TvaB6lI-OmiJlar3OeD73zFvboAeEH6zeVwwPIu-tlBIE5FnsK45dKywnoTf1Z-IDTG4YYYXjyJxayI7JTpPgXzW0wbn-PmBSI~Afu8fONyIGYGBbFj5CaU4az8CCMPVWJW9OyiJNXWqmO~l3bOhdAQnHFiQRo~0mDy6yo1WeSmLO2nK6hZ43qtMxocoZdFZSYRsbairRIS9ct1APA~UQo3eWhH4fWX~z1fEl2APaZYIQ64mzfwOh3gTbf4NhxopymYg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
-    "filter": ["Kläder"]
+    "filter": ["Kläder"] 
   },
   {
     "title": "Skor",

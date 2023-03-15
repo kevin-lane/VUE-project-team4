@@ -1,16 +1,13 @@
 <script setup>
-import mainCards from '../components/mainCards.vue'
+// import mainCards from '../components/mainCards.vue'
 
 
 </script>
 
 <template>
-<mainCards/>
-
+<h1>HEj</h1>
 </template>
-<script>
 
-</script>
 <style>
 
 

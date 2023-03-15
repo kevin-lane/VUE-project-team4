@@ -1,13 +1,11 @@
-<script setup>
-</script>
-
 <template>
+ <!-- <input type="text" v-model="textout"> -->
     <div id="product-container"><!--//Oscar-->
-    <div v-for="product in products" :key="product.id" class="card" :class="product.filter"><!--Loopar igenom products.json arrayen och renderar varje product som ett "card"--><!--v-for, v-bind-->
+    <div v-for="product in Itemlist" :key="product.id" class="card" :class="product.filter"><!--Loopar igenom products.json arrayen och renderar varje product som ett "card"--><!--v-for, v-bind-->
       <div class="bildcard">
         <img :src="product.picture" :alt="product.title" class="cardimage" /><!--Använder v-bind för att binda product taggarna med respektive css klass-->
         <p class="profilName">{{ product.profilName }}</p>
-        <img :src="product.profilBild" :alt="product.title" class="profilimage" />
+        <img :src="product.profilBild" :alt="product.title" class="profilimage" /> 
       </div>
       <div class="infocard">
         <h2 class="cardTitle">{{ product.title }}</h2>
@@ -25,7 +23,19 @@ export default {//Export default
   data() {
     return {
       products: [],//returnar array från array med information som vi bygger "cardsen" med
+      textout: '' 
     };
+  },
+  computed: {
+    Itemlist() {
+      if (this.$store.state.text.length > 0) {
+        return this.products.filter((item) =>
+          item.title.toLowerCase().includes(this.$store.state.text.toLowerCase())
+        )
+      }
+
+      return this.products 
+    },
   },
   mounted() {
     fetch("products.json")

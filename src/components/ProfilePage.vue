@@ -2,8 +2,8 @@
 <div id="flex-container"> 
 <div id="profile-container">
 <section id="profile-section">
-    <!-- <img src="../assets/happy-ge5620ff7a_1920.jpg" alt="man"> -->
-    <div id="img"></div>
+    <img src="../assets/happy-ge5620ff7a_1920.jpg" alt="man">
+    <!-- <div id="img"></div> -->
     <h2>Sixten Olsson</h2>
 </section>
 <!-- <button>Redigera</button> -->
@@ -45,11 +45,12 @@
     margin: 3em 0 0.5em 6em;
 }
 
-#img{
+img{
     width: 193px;
     height: 193px;
     border-radius: 96.5px;
     background-color: rgb(237, 237, 237);
+    object-fit: cover; 
 }
 
 h2{
