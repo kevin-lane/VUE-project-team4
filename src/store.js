@@ -12,13 +12,18 @@ const mutations = {
   },
 
   storeWish(state, product){
+
   state.productPicture.push(product.picture);
   state.productPrice.push(product.price);
   state.wishClass = true;
+
+
   },
   removeWish(state, index) {
     state.productPicture.splice(index, 1);
   state.productPrice.splice(index, 1);
+
+
 
   if(state.productPrice.length < 1){
     state.wishClass = false;
@@ -33,7 +38,8 @@ const state = {
   loggedInUserId: 0,
   productPicture: [],
   productPrice: [],
-  wishClass: false
+  wishClass: false,
+
 };
 
 //Uses strict: true

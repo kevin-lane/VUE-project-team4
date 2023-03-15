@@ -1,23 +1,25 @@
-[
-  {
-    "firstName": "Sixten",
-    "lastName": "Olsson",
-    "email": "sixtenolsson@live.se",
-    "password": "Sixty66",
-    "id": 1
-  },
-  {
-    "firstName": "Karin",
-    "lastName": "Lindberg",
-    "email": "karinlindberg@hotmail.se",
-    "password": "Carre44",
-    "id": 2
-  },
-  {
-    "firstName": "Felix",
-    "lastName": "Jansson",
-    "email": "felixjansson@gmail.com",
-    "password": "Felle22",
-    "id": 3
-  }
-]
+{
+  "users": [
+    {
+      "firstName": "Sixten",
+      "lastName": "Olsson",
+      "email": "sixtenolsson@live.se",
+      "password": "Sixty66",
+      "id": 1
+    },
+    {
+      "firstName": "Karin",
+      "lastName": "Lindberg",
+      "email": "karinlindberg@hotmail.se",
+      "password": "Carre44",
+      "id": 2
+    },
+    {
+      "firstName": "Felix",
+      "lastName": "Jansson",
+      "email": "felixjansson@gmail.com",
+      "password": "Felle22",
+      "id": 3
+    }
+  ]
+}

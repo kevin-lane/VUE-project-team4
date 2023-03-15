@@ -32,7 +32,7 @@ export default {
           <!-- Nav bar search item and liked items icons  -->
         <div id="icons">
           <router-link v-if="$store.state.wishClass == false" to="/wishlist"><i class="bi-suit-heart"></i></router-link>
-          <router-link v-else to="/wishlist"><i class="bi-suit-heart" id="red"></i></router-link>
+          <router-link v-else to="/wishlist">{{this.$store.state.productPicture.length}}<i class="bi-suit-heart" id="red"></i></router-link>
           <a href=""> <i class="bi-search"></i></a>
         </div>
         <!-- Hamburger menu button starts here   -->
@@ -86,6 +86,8 @@ export default {
    <nav class="navbar">
 
         <router-link to="/home"><i class="bi bi-house-fill"></i> </router-link>
+        <router-link v-if="$store.state.wishClass == false" to="/wishlist"><i class="bi-suit-heart"></i></router-link>
+          <router-link v-else to="/wishlist">{{this.$store.state.productPicture.length}}<i class="bi-suit-heart" id="red"></i></router-link>
         <router-link to=""><i class="bi bi-search"></i> </router-link>
         <router-link to="/add"><i class="bi bi-plus-lg"></i> </router-link>
         <router-link to="/profil"><i class="bi bi-person-fill"></i> </router-link>
@@ -122,7 +124,6 @@ a:link {
   text-decoration: none;
 }
 
-
 .bi:hover {
   cursor: pointer;
 }
@@ -148,7 +149,6 @@ h1 {
 #navBar {
   margin-top: 100px;
 }
-
 #icons {
   display: flex;
   column-gap: 10px;
@@ -160,7 +160,6 @@ h1 {
 #red{
   color:red
 }
-
 
 
 .navbar-toggler,

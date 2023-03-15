@@ -1,21 +1,27 @@
+
 <script setup>
 import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
 </script>
 
 <template>
+ <!-- <input type="text" v-model="textout"> -->
     <div id="product-container"><!--//Oscar-->
+
     <div v-for="product, index in products" :key="product.id" class="card" :class="product.filter"><!--Loopar igenom products.json arrayen och renderar varje product som ett "card"--><!--v-for, v-bind-->
+
       <div class="bildcard">
         <img :src="product.picture" :alt="product.title" class="cardimage" /><!--Använder v-bind för att binda product taggarna med respektive css klass-->
         <p class="profilName">{{ product.profilName }}</p>
-        <img :src="product.profilBild" :alt="product.title" class="profilimage" />
+        <img :src="product.profilBild" :alt="product.title" class="profilimage" /> 
       </div>
       <div class="infocard">
         <h2 class="cardTitle">{{ product.title }}</h2>
         <p class="infotitel">Info:</p>
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
-        <button class="gillaknapp" @click="$store.commit('storeWish', product)" :class="index"></button>
+        <button class="gillaknapp" @click=" active(index, product)" :class="{ active: ListItem.includes(index) }"></button>
+        <!-- TESTA KEY????? -->
+        <!-- $store.commit('storeWish', product), -->
         <button class="köpknapp" @click="showContainer = true">Köp</button><!--visar popupprompt fönstret-->
 
 
@@ -41,16 +47,54 @@ export default {//Export default
     return {
       products: [],//returnar array från array med information som vi bygger "cardsen" med
       showContainer: false,//showcontainer false gör så att popupprompten är döljd fdrån start
-      heartColor: { color: 'red'}
+      isActive: false,
+      ListItem: []
     };
+  },
+  computed: {
+    Itemlist() {
+      if (this.$store.state.text.length > 0) {
+        return this.products.filter((item) =>
+          item.title.toLowerCase().includes(this.$store.state.text.toLowerCase())
+        )
+      }
+
+      return this.products 
+    },
   },
   mounted() {
     fetch("products.json")
       .then((response) => response.json())
       .then((data) => {
         this.products = data;
+
       });
   },
+  methods: {
+
+    active(index, product){
+      this.isActive = !this.isActive;
+
+
+
+
+
+        if(this.ListItem.includes(index)) {
+          this.ListItem.splice(index , 1)
+
+
+          this.$store.commit('removeWish', index);
+
+      }
+      else{
+        this.ListItem.push(index)
+
+        this.$store.commit('storeWish', product)
+
+      }
+
+    }
+  }
 
 };
 
@@ -102,6 +146,8 @@ export default {//Export default
   #right-button{
     background-color: #3AA05D;
   }
+
+
  @media screen and (min-width: 800px){/*desktop */
   .card {
     display: block;
@@ -181,11 +227,11 @@ export default {//Export default
     right: 13.42%;
     top: 29.52%;
     bottom: 58.05%;
-
     background: url(../assets/cards-heart-outline.svg) no-repeat center;
     background-repeat: no-repeat;
     background-size: contain;
     border: 0;
+
   }
   .köpknapp{
     box-sizing: border-box;
@@ -243,6 +289,13 @@ export default {//Export default
     color: #000000;
   }
 }
+.active {
+
+  background: url(../assets/cards-heart-outline-red.svg) no-repeat center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 @media screen and (max-width: 800px){/* mobile */
     .card {
@@ -333,6 +386,14 @@ export default {//Export default
     top: 11.83%;
     bottom: 72.72%;
   }
+
+  .active {
+
+  background: url(../assets/cards-heart-outline-red.svg) no-repeat center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
   .köpknapp{
     position: absolute;
     left: 79.2%;
@@ -397,6 +458,7 @@ export default {//Export default
 .card.hidden {
   display: none;
 }
+
 
 
 
