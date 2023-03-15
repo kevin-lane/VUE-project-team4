@@ -13,7 +13,7 @@ export default {
             showButton: false
         }
     },
-    async mounted() {
+   async mounted() {
         await this.fetchUser(1) // fetch user with ID 1 by default
     },
     methods: {
