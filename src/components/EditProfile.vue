@@ -1,43 +1,78 @@
+<script>
+
+export default {
+    data() {
+        return {
+            input: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: ''
+            },
+
+            showButton: false
+
+        }
+    },
+    methods: {
+        updatePost() {
+            console.warn(this.input)
+            fetch("../public/users.json", {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            })
+                .then(response => response.json())
+                .then(data => console.log(data))
+        }
+    },
+
+    mounted() {
+        console.warn(this.$route.params.id)
+    }
+}
+
+</script>
+
 <template>
     <div class="wrapper">
         <div class="top">
             <div class="top-left">
                 <div class="container">
-                    <img src="dj.jpg" alt="" class="profile-pic">
+                    <img src="" alt="" class="profile-pic">
                     <button class="upload">Upload New Image</button>
                 </div>
             </div>
             <div class="top-right">
                 <div class="container">
-                    <button class="edit-profile">Edit Profile</button>
+                    <button @click="showButton = !showButton" class="edit-profile">Edit Profile</button>
                 </div>
             </div>
         </div>
         <div class="mid">
             <div class="container">
-                <div class="name">
-                    <input type="text" class="form" placeholder="Enter your first name:">
-                </div>
-                <div class="lastname">
-                    <input type="text" class="form" placeholder="Enter your last name:">
-                </div>
-                <div class="email">
-                    <input type="text" class="form" placeholder="Email:">
-                </div>
-                <div class="newpassword">
-                    <input type="text" class="form" placeholder="Old password:">
-                </div>
-                <div class="oldpassword">
-                    <input type="text" class="form" placeholder="New password:">
-                </div>
+                <form>
+                    <input v-model="input.firstName" class="form" placeholder="Enter your first name:">
+                    <input v-model="input.lastName" class=" form" placeholder="Enter your last name:">
+                    <input v-model="input.email" class="form" placeholder="Email:">
+                    <input v-model="input.password" class="form" placeholder="Old password:">
+                </form>
             </div>
         </div>
+
+
         <div class="bottom">
             <div class="bottom-left">
-                <button class="cancel">Cancel</button>
+                <router-link to="/profile" custom v-slot="{ navigate }">
+                    <button v-if="showButton" @click="navigate" role="link" class="cancel">Cancel</button>
+                </router-link>
             </div>
             <div class="bottom-right">
-                <button class="save">Done</button>
+                <router-link to="/profile" custom v-slot="{ navigate }">
+                    <button v-if="showButton" @click="updatePost" role="link" class="save">Done</button>
+                </router-link>
             </div>
         </div>
     </div>
@@ -77,7 +112,6 @@ input {
 .top-left {
     width: 30%;
     height: 100%;
-
 }
 
 .profile-pic {
@@ -95,7 +129,6 @@ button {
     text-decoration: none;
     transition-duration: 0.4s;
     border-radius: 5px;
-
 }
 
 button:hover {
@@ -146,7 +179,6 @@ img {
     margin-top: 15px;
     margin-bottom: 0px;
 }
-
 
 .bottom {
     height: 10%;
