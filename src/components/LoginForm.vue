@@ -16,10 +16,11 @@
       },
       loginUser(e){
         e.preventDefault();
-        fetch("../public/users.json")
+        fetch("http://localhost:3000/users")
         .then(response => response.json())
-        .then(response =>{
-          response.find(usr => {
+        .then(result =>{
+          console.log(result);
+          result.find(usr => {
             if (usr.email === this.email && usr.password === this.password) {
               alert("Logged in");
               this.$store.commit('userLogin', true);
@@ -29,6 +30,7 @@
             }
           });
         })
+        .catch(err => console.log(err.message))
       }
     },
     //Watcher inplemented to get rid of Wrong log in details when user starts typing

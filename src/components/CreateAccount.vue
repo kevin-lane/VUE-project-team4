@@ -2,6 +2,7 @@
   export default{
     data(){
       return{
+        id: Math.floor(Math.random() * 100),
         firstName: '',
         lastName: '',
         email: '',
@@ -10,12 +11,33 @@
       }
     },
     methods: {
-      addNewUser(){
-        if (this.password !== this.confirmedPassword) {
+      addNewUser(e){
+        e.preventDefault();
+        if(this.firstName === '' || this.lastName === '' || this.email === '' || this.password === '' || this.confirmedPassword === ''){
+          alert("All fields are required!");
+        }
+        else if(this.password !== this.confirmedPassword) {
           alert("Password and confirmed password don't match");
         }
         else{
           alert("New user added");
+          fetch("http://localhost:3000/users", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              id: this.id,
+              firstName: this.firstName,
+              lastName: this.lastName,
+              email: this.email,
+              password: this.password
+            })
+          })
+          .then((response) => response.json())
+          .then((newUser) => console.log(newUser))
+          .catch((error) => console.log("Error: ", error));
+          this.$store.commit('createAccount', false); //Change to Log in form when user account created
         }
       }
     }
