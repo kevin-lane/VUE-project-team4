@@ -48,6 +48,13 @@
       "lastName": "Lindberg",
       "email": "alexa@live.se",
       "password": "Sadd"
+    },
+    {
+      "id": 4,
+      "firstName": "Daniel",
+      "lastName": "Lindgren",
+      "email": "danne@live.se",
+      "password": "Danne13"
     }
   ]
 }

@@ -5,8 +5,10 @@ const mutations = {
     state.newUser = newUser;
   },
 
-  userLogin(state, loggedIn){
+  userLogin(state, {loggedIn, loggedInUserId}){
     state.loggedIn = loggedIn;
+    state.loggedInUserId = loggedInUserId;
+    console.log(state.loggedInUserId);
   },
 
   storeWish(state, product){
@@ -33,6 +35,7 @@ const mutations = {
 const state = {
   newUser: false,
   loggedIn: false,
+  loggedInUserId: 0,
   productPicture: [],
   productPrice: [],
   wishClass: false,
