@@ -1,9 +1,9 @@
 <script>
-
 export default {
     data() {
         return {
-            input: {
+            user: {
+                id: 1, // set default ID to 1
                 firstName: '',
                 lastName: '',
                 email: '',
@@ -11,28 +11,81 @@ export default {
             },
 
             showButton: false
-
         }
+    },
+    async mounted() {
+        await this.fetchUser(1) // fetch user with ID 1 by default
     },
     methods: {
-        updatePost() {
-            console.warn(this.input)
-            fetch("../public/users.json", {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({})
-            })
-                .then(response => response.json())
-                .then(data => console.log(data))
-        }
-    },
+        async fetchUser(id) {
+            try {
+                const response = await fetch(`https://localhost:3000/users/${id}`)
 
-    mounted() {
-        console.warn(this.$route.params.id)
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch user data for ID ${id}.`)
+                }
+
+                const userData = await response.json()
+                this.user = userData
+            } catch (error) {
+                console.error(error.message)
+            }
+        },
+        async updateUser() {
+            try {
+                const response = await fetch(`https://localhost:3000/users/${this.user.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(this.user)
+                })
+
+                if (!response.ok) {
+                    throw new Error(`Failed to update user with ID ${this.user.id}.`)
+                }
+
+                console.log(`User with ID ${this.user.id} updated successfully.`)
+            } catch (error) {
+                console.error(error.message)
+            }
+        }
     }
 }
+
+// export default {
+//     data() {
+//         return {
+//             input: {
+//                 firstName: '',
+//                 lastName: '',
+//                 email: '',
+//                 password: ''
+//             },
+
+//             showButton: false
+
+//         }
+//     },
+//     methods: {
+//         updatePost() {
+//             console.warn(this.users)
+//             fetch("https://localhost:3000/users" + this.$route.params.id, {
+//                 method: 'GET',
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify({ name: this.input.firstName, lastname: this.input.lastName, email: this.input.email, password: this.input.password })
+//             })
+//                 .then(response => response.json())
+//                 .then(data => this.input = console.log(data))
+//         }
+//     },
+
+//     mounted() {
+//         console.warn(this.$route.params.id)
+//     }
+// }
 
 </script>
 
@@ -54,10 +107,10 @@ export default {
         <div class="mid">
             <div class="container">
                 <form>
-                    <input v-model="input.firstName" class="form" placeholder="Enter your first name:">
-                    <input v-model="input.lastName" class=" form" placeholder="Enter your last name:">
-                    <input v-model="input.email" class="form" placeholder="Email:">
-                    <input v-model="input.password" class="form" placeholder="Old password:">
+                    <input v-model="user.firstName" class="form" placeholder="Enter your first name:">
+                    <input v-model="user.lastName" class=" form" placeholder="Enter your last name:">
+                    <input v-model="user.email" class="form" placeholder="Email:">
+                    <input v-model="user.password" class="form" placeholder="Old password:">
                 </form>
             </div>
         </div>
