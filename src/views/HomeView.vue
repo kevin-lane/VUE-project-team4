@@ -1,14 +1,16 @@
 <script setup>
-// import mainCards from '../components/mainCards.vue'
-
-
+  import mainCards from '../components/mainCards.vue'
+  import FilterComponent from '../components/FilterComponent.vue';
 </script>
 
 <template>
-<h1>HEj</h1>
+  <main>
+    <mainCards/>
+    <FilterComponent/>
+  </main>
 </template>
-
+<script>
+</script>
 <style>
-
 
 </style>

@@ -1,18 +1,64 @@
+<script>
+  export default{
+    data(){
+      return{
+        id: Math.floor(Math.random() * 100),
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmedPassword: ''
+      }
+    },
+    methods: {
+      addNewUser(e){
+        e.preventDefault();
+        if(this.firstName === '' || this.lastName === '' || this.email === '' || this.password === '' || this.confirmedPassword === ''){
+          alert("All fields are required!");
+        }
+        else if(this.password !== this.confirmedPassword) {
+          alert("Password and confirmed password don't match");
+        }
+        else{
+          alert("New user added");
+          fetch("http://localhost:3000/users", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              id: this.id,
+              firstName: this.firstName,
+              lastName: this.lastName,
+              email: this.email,
+              password: this.password
+            })
+          })
+          .then((response) => response.json())
+          .then((newUser) => console.log(newUser))
+          .catch((error) => console.log("Error: ", error));
+          this.$store.commit('createAccount', false); //Change to Log in form when user account created
+        }
+      }
+    }
+  }
+</script>
+
 <template>
   <form id="signup-form">
     <h1>Sign up</h1>
-    <input class="input-forms" type="text" placeholder="First Name">
+    <input v-model="firstName" class="input-forms" type="text" placeholder="First Name" required>
     <br>
-    <input class="input-forms" type="text" placeholder="Last Name">
+    <input v-model="lastName" class="input-forms" type="text" placeholder="Last Name" required>
     <br>
-    <input class="input-forms" type="email" placeholder="Email Address">
+    <input v-model="email" class="input-forms" type="email" placeholder="Email Address" required>
     <br>
-    <input class="input-forms" type="password" placeholder="Password">
+    <input v-model="password" class="input-forms" type="password" placeholder="Password" required>
     <br>
-    <input class="input-forms" type="password" placeholder="Confirm Password">
+    <input v-model="confirmedPassword" class="input-forms" type="password" placeholder="Confirm Password" required>
     <input type="checkbox" id="policy-approval" name="policy-approval" >
       <label id="policy-approval-label" for="policy-approval">I accept Terms and Privacy Policy</label>
-    <button id="signup-button">Sign up</button><br>
+    <button @click="addNewUser" id="signup-button">Sign up</button><br>
   </form>
 </template>
 

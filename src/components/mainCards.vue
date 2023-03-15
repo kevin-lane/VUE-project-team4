@@ -1,7 +1,14 @@
+
+<script setup>
+import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
+</script>
+
 <template>
  <!-- <input type="text" v-model="textout"> -->
     <div id="product-container"><!--//Oscar-->
-    <div v-for="product in Itemlist" :key="product.id" class="card" :class="product.filter"><!--Loopar igenom products.json arrayen och renderar varje product som ett "card"--><!--v-for, v-bind-->
+
+    <div v-for="product, index in products" :key="product.id" class="card" :class="product.filter"><!--Loopar igenom products.json arrayen och renderar varje product som ett "card"--><!--v-for, v-bind-->
+
       <div class="bildcard">
         <img :src="product.picture" :alt="product.title" class="cardimage" /><!--Använder v-bind för att binda product taggarna med respektive css klass-->
         <p class="profilName">{{ product.profilName }}</p>
@@ -12,10 +19,26 @@
         <p class="infotitel">Info:</p>
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
-        <button class="gillaknapp"></button>
-        <button class="köpknapp">Köp</button>
+        <button class="gillaknapp" @click=" active(index, product)" :class="{ active: ListItem.includes(index) }"></button>
+        <!-- TESTA KEY????? -->
+        <!-- $store.commit('storeWish', product), -->
+        <button class="köpknapp" @click="showContainer = true">Köp</button><!--visar popupprompt fönstret-->
+
+
+      </div>
+
+    <!-- </div> -->
+    <div v-if="showContainer" class="container"><!-- V-if för att visa/dölja "popupprompten" -->
+      <p>Är du säker att du vill fortsätta till kassan</p>
+      <SquaredQuestionMark />
+      <div class="button-container">
+        <button id="left-button" class="buttons" @click="showContainer = false">Avbryt</button><!--döljer popupprompt fönstret-->
+        <router-link to="/checkout" custom v-slot="{ navigate }">
+          <button @click="navigate" role="link" id="right-button" class="buttons">Fortsätt</button><!--Routerlink som navigerar till checkout-->
+        </router-link>
       </div>
     </div>
+  </div>
   </div>
 </template>
 <script scoped>//Oscar
@@ -23,7 +46,9 @@ export default {//Export default
   data() {
     return {
       products: [],//returnar array från array med information som vi bygger "cardsen" med
-      textout: '' 
+      showContainer: false,//showcontainer false gör så att popupprompten är döljd fdrån start
+      isActive: false,
+      ListItem: []
     };
   },
   computed: {
@@ -42,10 +67,39 @@ export default {//Export default
       .then((response) => response.json())
       .then((data) => {
         this.products = data;
+
       });
   },
+  methods: {
+
+    active(index, product){
+      this.isActive = !this.isActive;
+
+
+
+
+
+        if(this.ListItem.includes(index)) {
+          this.ListItem.splice(index , 1)
+
+
+          this.$store.commit('removeWish', index);
+
+      }
+      else{
+        this.ListItem.push(index)
+
+        this.$store.commit('storeWish', product)
+
+      }
+
+    }
+  }
+
 };
+
 </script>
+
 
 <style scoped>/* //Oscar */
  *,
@@ -56,6 +110,43 @@ export default {//Export default
   position: relative;
   font-weight: normal;
 }
+.container{
+    position: fixed;
+    background-color: #D0F2CC;
+    width: 360px;
+    height: 200px;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .button-container{
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+  }
+  .buttons{
+    width: 95px;
+    height: 46px;
+    border-radius: 7px;
+    border: none;
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+  }
+  #left-button{
+    background-color: black;
+  }
+  #right-button{
+    background-color: #3AA05D;
+  }
+
 
  @media screen and (min-width: 800px){/*desktop */
   .card {
@@ -136,11 +227,11 @@ export default {//Export default
     right: 13.42%;
     top: 29.52%;
     bottom: 58.05%;
-
     background: url(../assets/cards-heart-outline.svg) no-repeat center;
     background-repeat: no-repeat;
     background-size: contain;
     border: 0;
+
   }
   .köpknapp{
     box-sizing: border-box;
@@ -198,6 +289,13 @@ export default {//Export default
     color: #000000;
   }
 }
+.active {
+
+  background: url(../assets/cards-heart-outline-red.svg) no-repeat center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 @media screen and (max-width: 800px){/* mobile */
     .card {
@@ -288,6 +386,14 @@ export default {//Export default
     top: 11.83%;
     bottom: 72.72%;
   }
+
+  .active {
+
+  background: url(../assets/cards-heart-outline-red.svg) no-repeat center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
   .köpknapp{
     position: absolute;
     left: 79.2%;
@@ -352,6 +458,7 @@ export default {//Export default
 .card.hidden {
   display: none;
 }
+
 
 
 

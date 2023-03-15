@@ -1,5 +1,5 @@
 <template>
-<div id="flex-container"> 
+<div id="flex-container">
 <div id="profile-container">
 <section id="profile-section">
     <img src="../assets/happy-ge5620ff7a_1920.jpg" alt="man">
@@ -7,21 +7,26 @@
     <h2>Sixten Olsson</h2>
 </section>
 <!-- <button>Redigera</button> -->
-<input type="submit" value="Redigera" id="button" />
-<hr>
-<div id="card-container">
-<section id="product-grid" >
-<p>Super cool produkt</p>
-<p>Super cool produkt</p>
-<p>Bild2</p>
-<p>Bild3</p>
-<p>Bild4</p>
-<p>Bild5</p>
-<p>Bild6</p>
-</section>
-</div>
-</div>
-</div>   
+<!-- <input type="submit" value="Redigera" id="button" /> -->
+
+    <router-link
+        to="/editprofile" custom v-slot="{ navigate }">
+        <button @click="navigate" role="link" id="button">Redigera Profil</button>
+    </router-link>
+    <hr>
+    <div id="card-container">
+        <section id="product-grid" >
+            <p>Super cool produkt</p>
+            <p>Super cool produkt</p>
+            <p>Bild2</p>
+            <p>Bild3</p>
+            <p>Bild4</p>
+            <p>Bild5</p>
+            <p>Bild6</p>
+        </section>
+    </div>
+    </div>
+    </div>
 </template>
 <style scoped>
 
@@ -66,7 +71,7 @@ h2{
     border: rgb(79, 117, 152, 1);
     padding: 0.3em 0.8em 0.3em 0.8em;
     font-weight: 400;
-    
+
 }
 
 hr{
@@ -84,7 +89,7 @@ hr{
     display: grid;
     grid-template-columns: repeat( 3, 1fr);
     grid-template-rows: auto;
-    gap: 2em; 
+    gap: 2em;
 }
 
 p{
