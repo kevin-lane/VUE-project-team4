@@ -1,9 +1,76 @@
 <script>
-
 export default {
-    data() {
+  data() {
+    return {
+        id: 1   , // set default ID to 1
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',   
+        showButton: false,
+        inputDisabled: true
+    }
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      fetch(`http://localhost:3000/users/${this.id}`)
+        .then(response => response.json())
+        .then(data => {
+          this.firstName = data.firstName;
+          this.email = data.email;
+          this.lastName = data.lastName;
+          this.password = data.password;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    updateData() {
+      const data = {
+        id: this.id,
+        firstName: this.firstName,
+        email: this.email,
+        lastName: this.lastName,
+        password: this.password
+      };
+      fetch(`http://localhost:3000/users/${this.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Data updated successfully');
+        } else {
+          console.log('Failed to update data');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    },
+    handleClick() {
+        this.inputDisabled = false; // Enable input field
+      },
+
+      handleButton() {
+        this.showButton = true; // Enable input field
+      },
+      reloadPage() {
+      window.location.reload();
+    }
+    }
+  }
+
+    /* data() {
         return {
-            input: {
+            user: {
+                id: 1, // set default ID to 1
                 firstName: '',
                 lastName: '',
                 email: '',
@@ -11,28 +78,80 @@ export default {
             },
 
             showButton: false
-
         }
+    },
+   async mounted() {
+        await this.fetchUser(1) // fetch user with ID 1 by default
     },
     methods: {
-        updatePost() {
-            console.warn(this.input)
-            fetch("../public/users.json", {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({})
-            })
-                .then(response => response.json())
-                .then(data => console.log(data))
-        }
-    },
+        async fetchUser(id) {
+            try {
+                const response = await fetch(`https://localhost:3000/users/${id}`)
 
-    mounted() {
-        console.warn(this.$route.params.id)
-    }
-}
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch user data for ID ${id}.`)
+                }
+
+                const userData = await response.json()
+                this.user = userData
+            } catch (error) {
+                console.error(error.message)
+            }
+        },
+        async updateUser() {
+            try {
+                const response = await fetch(`https://localhost:3000/users/${this.user.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(this.user)
+                })
+
+                if (!response.ok) {
+                    throw new Error(`Failed to update user with ID ${this.user.id}.`)
+                }
+
+                console.log(`User with ID ${this.user.id} updated successfully.`)
+            } catch (error) {
+                console.error(error.message)
+            }
+        } 
+    } */
+
+// export default {
+//     data() {
+//         return {
+//             input: {
+//                 firstName: '',
+//                 lastName: '',
+//                 email: '',
+//                 password: ''
+//             },
+
+//             showButton: false
+
+//         }
+//     },
+//     methods: {
+//         updatePost() {
+//             console.warn(this.users)
+//             fetch("https://localhost:3000/users" + this.$route.params.id, {
+//                 method: 'GET',
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify({ name: this.input.firstName, lastname: this.input.lastName, email: this.input.email, password: this.input.password })
+//             })
+//                 .then(response => response.json())
+//                 .then(data => this.input = console.log(data))
+//         }
+//     },
+
+//     mounted() {
+//         console.warn(this.$route.params.id)
+//     }
+// }
 
 </script>
 
@@ -47,17 +166,17 @@ export default {
             </div>
             <div class="top-right">
                 <div class="container">
-                    <button @click="showButton = !showButton" class="edit-profile">Edit Profile</button>
+                    <button @click="handleButton(); handleClick();" class="edit-profile">Edit Profile</button>
                 </div>
             </div>
         </div>
         <div class="mid">
             <div class="container">
                 <form>
-                    <input v-model="input.firstName" class="form" placeholder="Enter your first name:">
-                    <input v-model="input.lastName" class=" form" placeholder="Enter your last name:">
-                    <input v-model="input.email" class="form" placeholder="Email:">
-                    <input v-model="input.password" class="form" placeholder="Old password:">
+                    <input v-model="firstName" class="form" placeholder="Enter your first name:" :disabled="inputDisabled">
+                    <input v-model="lastName" class=" form" placeholder="Enter your last name:" :disabled="inputDisabled">
+                    <input v-model="email" class="form" placeholder="Email:" :disabled="inputDisabled">
+                    <input v-model="password" class="form" placeholder="Old password:" :disabled="inputDisabled">
                 </form>
             </div>
         </div>
@@ -66,12 +185,12 @@ export default {
         <div class="bottom">
             <div class="bottom-left">
                 <router-link to="/profile" custom v-slot="{ navigate }">
-                    <button v-if="showButton" @click="navigate" role="link" class="cancel">Cancel</button>
+                    <button v-if="showButton" @click="reloadPage()" role="link" class="cancel">Cancel</button>
                 </router-link>
             </div>
             <div class="bottom-right">
                 <router-link to="/profile" custom v-slot="{ navigate }">
-                    <button v-if="showButton" @click="updatePost" role="link" class="save">Done</button>
+                    <button v-if="showButton" @click="updateData();" role="link" class="save">Done</button>
                 </router-link>
             </div>
         </div>
