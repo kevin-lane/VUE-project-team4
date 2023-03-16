@@ -85,10 +85,6 @@ h1 {
   margin-bottom: 1rem;
 }
 
-.flex {
-  display: flex;
-}
-
 #login-form {
   background-color: #4F7598;
   font-size: 20px;
