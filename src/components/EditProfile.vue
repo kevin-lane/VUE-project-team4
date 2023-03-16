@@ -56,6 +56,7 @@ export default {
                 .then(response => {
                     if (response.ok) {
                         console.log('Data updated successfully');
+                        console.log(this.$store.state.firstName);
                         this.$store.commit('editProfile', { firstName: this.firstName, lastName: this.lastName, email: this.email, password: this.password });
                     } else {
                         console.log('Failed to update data');
@@ -65,6 +66,7 @@ export default {
                     console.log(error);
                 });
         },
+
         handleClick() {
             if (this.showButton) {
                 this.inputDisabled = false; // Enable input field

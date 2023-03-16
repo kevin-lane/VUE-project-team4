@@ -15,15 +15,29 @@ const mutations = {
     console.log(state.loggedInUserId);
   },
 
+  setLoggedInUserId(state, userId) {
+    state.loggedInUserId = userId;
+  },
+  setfirstName(state, userId) {
+    state.firstName = userId;
+  },
+  setLastName(state, lastName) {
+    state.lastName = lastName;
+  },
+  setEmail(state, email) {
+    state.email = email;
+  },
+  setPassword(state, password) {
+    state.password = password;
+  },
+
   editProfile(state, { firstName, lastName, email, password }) {
     state.firstName = firstName;
     state.lastName = lastName;
     state.email = email;
     state.password = password;
-    console.log(state.firstName);
-    console.log(state.lastName);
-
   },
+
 
   storeWish(state, product) {
 
@@ -49,7 +63,7 @@ const mutations = {
 const state = {
   newUser: false,
   loggedIn: false,
-  loggedInUserId: 0,
+  loggedInUserId: null,
   firstName: '',
   lastName: '',
   email: '',
