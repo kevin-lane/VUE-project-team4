@@ -92,6 +92,14 @@ h1 {
   margin-top: 5em;
 }
 
+.links {
+  color: white;
+}
+
+#create-account-link {
+  position: absolute;
+}
+
 #login-form {
   background-color: #4F7598;
   font-size: 20px;
