@@ -92,26 +92,6 @@ h1 {
   margin-top: 5em;
 }
 
-#login-form {
-  background-color: #4F7598;
-  font-size: 20px;
-  padding-top: 2rem;
-  width: 390px;
-  height: 564px;
-  text-align: center;
-  border-radius: 6px;
-}
-
-.input-forms {
-  width: 354px;
-  height: 66px;
-  margin: 1rem;
-  padding: 1rem;
-  border: 1px;
-  border-radius: 1rem;
-  font-size: 20px;
-}
-
 .links {
   color: white;
 }
