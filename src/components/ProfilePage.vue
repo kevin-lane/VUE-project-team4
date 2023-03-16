@@ -1,4 +1,4 @@
-<template>
+ <template>
 
     <div v-for="(item, index) in items" :key="item.id" id="flex-container">
        <template v-if="index === 0">
@@ -14,15 +14,15 @@
            <hr />
            <div id="card-container">
              <section id="product-grid">
-               <img :src="getImageById(1111).picture" alt="shoes" />
-               <img :src="getImageById(2222).picture" alt="ring" />
-               <img :src="getImageById(4444).picture" alt="bed" />
-               <img :src="getImageById(5555).picture" alt="ball" />
-               <img :src="getImageById(1212).picture" alt="bracelet" />
-               <img :src="getImageById(7777).picture" alt="bike" />
-               <img :src="getImageById(8888).picture" alt="lamp" />
-               <img :src="getImageById(9999).picture" alt="sweater" />
-               <img :src="getImageById(1313).picture" alt="ball" />
+               <img :src="getImageById(1).picture" alt="shoes" />
+               <img :src="getImageById(2).picture" alt="ring" />
+               <img :src="getImageById(4).picture" alt="bed" />
+               <img :src="getImageById(5).picture" alt="ball" />
+               <img :src="getImageById(6).picture" alt="bracelet" />
+               <img :src="getImageById(7).picture" alt="bike" />
+               <img :src="getImageById(8).picture" alt="lamp" />
+               <img :src="getImageById(9).picture" alt="sweater" />
+               <img :src="getImageById(10).picture" alt="ball" />
              </section>
            </div>
          </div>
@@ -50,19 +50,21 @@
    </script>
 
 
-   +<style scoped>
+   <style scoped>
    #flex-container {
      display: flex;
      justify-content: center;
    }
 
-   profile-container {
+   #profile-container {
      width: 730px;
      height: auto;
      border-radius: 6px;
      background-color: rgb(255, 255, 255);
-     border: black solid 1px;
+     border: none;
      margin-bottom: 3em;
+     margin-top: 10vh;
+     box-shadow: 1px 2px 2px  rgb(205, 204, 204);
    }
 
    #profile-section {
@@ -142,7 +144,7 @@
        height: auto;
        border-radius: 6px;
        background-color: rgb(255, 255, 255);
-       border: black solid 1px;
+       border: none;
        margin-bottom: 3em;
      }
      #product-grid {

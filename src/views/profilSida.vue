@@ -1,8 +1,8 @@
 <script setup>
-import profil from '../components/ProfilePage.vue'
+import ProfilePage from '../components/ProfilePage.vue'
 </script>
 <template>
-<profil/>
+<ProfilePage/>
 </template>
 <style>
 
