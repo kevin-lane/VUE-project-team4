@@ -34,6 +34,7 @@ export default {
           <router-link v-if="$store.state.wishClass == false" to="/wishlist"><i class="bi-suit-heart"></i></router-link>
           <router-link v-else to="/wishlist">{{this.$store.state.productPicture.length}}<i class="bi-suit-heart" id="red"></i></router-link>
           <a href=""> <i class="bi-search"></i></a>
+
         </div>
         <!-- Hamburger menu button starts here   -->
         <button

@@ -8,5 +8,4 @@ import desktopNav from './components/DesktopNav.vue'
 <template>
 <HeroSection/>
 <desktopNav/>
-
 </template>
