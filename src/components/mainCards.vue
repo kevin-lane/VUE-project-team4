@@ -96,13 +96,12 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
 
     <!-- </div> -->
 
-    <div v-for="product in filteredProducts" :key="product.id" class="card">
-
+    <div v-for="product,index in filteredProducts" :key="product.id" class="card">
 
       <div class="bildcard">
         <img :src="product.picture" :alt="product.title" class="cardimage" />
         <p class="profilName">{{ product.profilName }}</p>
-        <img :src="product.profilBild" :alt="product.title" class="profilimage" /> 
+        <img :src="product.profilBild" :alt="product.title" class="profilimage" />
       </div>
       <div class="infocard">
         <h2 class="cardTitle">{{ product.title }}</h2>
@@ -129,6 +128,7 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
         </div>
       </div>
     </div>
+
   <!-- </div> -->
   </template>
 
@@ -143,7 +143,7 @@ export default {
       showContainer: false,
       Kläder: ["Kläder"],
       screenWidth: window.innerWidth,
-
+      ListItem: []
 
       };
   },
@@ -164,20 +164,18 @@ export default {
     return this.products.filter((product) => product.filter.includes(this.selectedFilter));
   }
 },
-
-
-  },
-  computed: {
-    Itemlist() {
+Itemlist() {
       if (this.$store.state.text.length > 0) {
         return this.products.filter((item) =>
           item.title.toLowerCase().includes(this.$store.state.text.toLowerCase())
         )
       }
 
-      return this.products 
+      return this.products
     },
+
   },
+
   mounted() {
     fetch("products.json")
       .then((response) => response.json())
@@ -224,7 +222,7 @@ export default {
 
   }
 
-};
+// };
 </script>
 
 
@@ -406,7 +404,7 @@ h4 {
     padding: 0;
     width: 730px;
     height: 704px;
-    top: 204px;
+    top: 100px;
   }
   .cardimage {
     height: 530px;

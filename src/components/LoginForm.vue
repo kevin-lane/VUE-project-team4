@@ -57,6 +57,7 @@
 </script>
 
 <template>
+  <div class="login-flex">
   <form id="login-form">
     <h1>Sign in</h1>
     <input v-model="email" class="input-forms" type="email" placeholder="Email Address">
@@ -69,12 +70,18 @@
     <a class="links" href="">Forgot Password?</a>
     <p id="wrong-login-details">Wrong email or password</p>
   </form>
+</div>
 </template>
 
 <style scoped>
   h1{
     color: white;
     margin-bottom: 1rem;
+  }
+  .login-flex{
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
   }
   #login-form{
     background-color: #4F7598;
@@ -83,6 +90,9 @@
     width: 390px;
     height: 564px;
     text-align: center;
+    border-radius: 6px;
+
+
   }
   .input-forms{
     width: 354px;

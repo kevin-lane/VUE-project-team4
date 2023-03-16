@@ -1,6 +1,6 @@
 <script setup>
 
-import DesktopNav from '../components/DesktopNav.vue'
+// import DesktopNav from '../components/DesktopNav.vue'
 
 import mainCards from '../components/mainCards.vue'
 
@@ -9,7 +9,7 @@ import mainCards from '../components/mainCards.vue'
 <template>
 <mainCards/>
 
-<DesktopNav/>
+<!-- <DesktopNav/> -->
 
 
 
