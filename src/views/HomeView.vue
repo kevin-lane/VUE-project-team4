@@ -2,7 +2,7 @@
 import DesktopNav from '../components/DesktopNav.vue'
 //import navBar from '../components/filterMobile.vue'
 import mainCards from '../components/mainCards.vue'
-import filterdt from '../components/FilterComponent.vue'
+// import filterdt from '../components/FilterComponent.vue'
 // import popup from '../components/PopupWindow.vue'
 
 </script>
@@ -12,7 +12,7 @@ import filterdt from '../components/FilterComponent.vue'
 <!-- <popup/> -->
 <!-- <navBar/> -->
 <DesktopNav/>
-<filterdt/>
+<!-- <filterdt/> -->
 
 </template>
 <script>
