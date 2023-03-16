@@ -1,16 +1,73 @@
+<script>
+  export default{
+    data(){
+      return {
+        email: '',
+        password: '',
+        userId: null
+      }
+    },
+    methods: {
+      fetchUser(e){
+        e.preventDefault();
+        console.log("Logged in");
+        fetch("../public/users.json")
+        .then(response => response.json())
+        .then(response => console.log(JSON.stringify(response[0])))
+      },
+      loginUser(e){
+        e.preventDefault();
+        fetch("http://localhost:3000/users")
+        .then(response => response.json())
+        .then(result =>{
+          // console.log(result[0].id);
+          const loggedInUser = result.filter(user => user.email === this.email)
+          console.log(loggedInUser[0].id);
+          result.find(usr => {
+            if (usr.email === this.email && usr.password === this.password) {
+              alert("Logged in");
+              this.$store.commit('userLogin', {
+                "loggedIn":true,
+                "loggedInUserId":loggedInUser[0].id
+              }
+              );
+            }
+            else{
+              document.getElementById('wrong-login-details').style.visibility = 'visible'
+            }
+          });
+        })
+        .catch(err => console.log(err.message))
+      }
+    },
+    //Watcher inplemented to get rid of Wrong log in details when user starts typing
+    watch: {
+      email(newVal, oldVal){
+        if(newVal !== oldVal){
+          document.getElementById('wrong-login-details').style.visibility = 'hidden'
+        }
+      },
+      password(newVal, oldVal){
+        if(newVal !== oldVal){
+          document.getElementById('wrong-login-details').style.visibility = 'hidden'
+        }
+      }
+    }
+  }
+</script>
+
 <template>
   <form id="login-form">
     <h1>Sign in</h1>
-    <input class="input-forms" type="email" placeholder="Email Address">
+    <input v-model="email" class="input-forms" type="email" placeholder="Email Address">
     <br>
-    <input class="input-forms" type="password" placeholder="Password">
+    <input v-model="password" class="input-forms" type="password" placeholder="Password">
     <br>
-
-    <router-link to="/createacc"><a id="create-account-link" class="links" href="">Create an account</a></router-link>
-
+    <a @click.prevent="$store.commit('createAccount', true)" id="create-account-link" class="links" href="">Create an account</a>
     <br>
-    <button id="login-button">Login</button><br>
+    <button @click.prevent="loginUser" id="login-button">Login</button><br>
     <a class="links" href="">Forgot Password?</a>
+    <p id="wrong-login-details">Wrong email or password</p>
   </form>
 </template>
 
@@ -41,7 +98,7 @@
   }
   #create-account-link{
     position: absolute;
-    right: 2rem;
+
   }
   #login-button{
     width: 214px;
@@ -52,5 +109,9 @@
     border: 1px;
     color: white;
     font-size: 20px;
+  }
+  #wrong-login-details{
+    visibility: hidden;
+    color: rgb(200, 255, 0);
   }
 </style>

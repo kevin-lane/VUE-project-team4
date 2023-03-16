@@ -1,8 +1,10 @@
+
 <script setup>
 import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
 </script>
 
 <template>
+
   <!-- <filterButtons/> -->
   <div v-if="screenWidth >= 1100">
   <div id="navBar">
@@ -96,18 +98,25 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
 
     <div v-for="product in filteredProducts" :key="product.id" class="card">
 
+
       <div class="bildcard">
         <img :src="product.picture" :alt="product.title" class="cardimage" />
         <p class="profilName">{{ product.profilName }}</p>
-        <img :src="product.profilBild" :alt="product.title" class="profilimage" />
+        <img :src="product.profilBild" :alt="product.title" class="profilimage" /> 
       </div>
       <div class="infocard">
         <h2 class="cardTitle">{{ product.title }}</h2>
         <p class="infotitel">Info:</p>
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
-        <button class="gillaknapp"></button>
-        <button class="köpknapp" @click="showContainer = true">Köp</button>
+
+        <button class="gillaknapp" @click=" active(index, product)" :class="{ active: ListItem.includes(index) }"></button>
+        <!-- TESTA KEY????? -->
+        <!-- $store.commit('storeWish', product), -->
+        <button class="köpknapp" @click="showContainer = true">Köp</button><!--visar popupprompt fönstret-->
+
+
+
       </div>
       <div v-if="showContainer" class="container">
         <p>Är du säker att du vill fortsätta till kassan</p>
@@ -128,6 +137,7 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
 export default {
   data() {
     return {
+
       products: [],
       selectedFilter: "",
       showContainer: false,
@@ -155,12 +165,25 @@ export default {
   }
 },
 
+
+  },
+  computed: {
+    Itemlist() {
+      if (this.$store.state.text.length > 0) {
+        return this.products.filter((item) =>
+          item.title.toLowerCase().includes(this.$store.state.text.toLowerCase())
+        )
+      }
+
+      return this.products 
+    },
   },
   mounted() {
     fetch("products.json")
       .then((response) => response.json())
       .then((data) => {
         this.products = data;
+
       });
       window.addEventListener('resize', this.handleResize)
   },
@@ -168,9 +191,36 @@ export default {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
+
     handleResize() {
       this.screenWidth = window.innerWidth
     },
+
+
+    active(index, product){
+      this.isActive = !this.isActive;
+
+
+
+
+
+        if(this.ListItem.includes(index)) {
+          this.ListItem.splice(index , 1)
+
+
+          this.$store.commit('removeWish', index);
+
+      }
+      else{
+        this.ListItem.push(index)
+
+        this.$store.commit('storeWish', product)
+
+      }
+
+    }
+  }
+
 
   }
 
@@ -227,6 +277,7 @@ export default {
   #right-button{
     background-color: #3AA05D;
   }
+
   @media screen and (min-width: 1100px){/*desktopfilter */
 .filter-button{
   padding: 0;
@@ -345,6 +396,7 @@ h4 {
 
 
 }
+
  @media screen and (min-width: 800px){/*desktop */
   .card {
     display: block;
@@ -428,11 +480,11 @@ h4 {
     right: 13.42%;
     top: 29.52%;
     bottom: 58.05%;
-
     background: url(../assets/cards-heart-outline.svg) no-repeat center;
     background-repeat: no-repeat;
     background-size: contain;
     border: 0;
+
   }
   .köpknapp{
     box-sizing: border-box;
@@ -490,6 +542,13 @@ h4 {
     color: #000000;
   }
 }
+.active {
+
+  background: url(../assets/cards-heart-outline-red.svg) no-repeat center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 @media screen and (max-width: 800px){/* mobile */
     .card {
@@ -580,6 +639,14 @@ h4 {
     top: 11.83%;
     bottom: 72.72%;
   }
+
+  .active {
+
+  background: url(../assets/cards-heart-outline-red.svg) no-repeat center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
   .köpknapp{
     position: absolute;
     left: 79.2%;
@@ -644,6 +711,7 @@ h4 {
 .card.hidden {
   display: none;
 }
+
 
 
 
