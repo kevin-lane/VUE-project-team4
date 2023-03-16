@@ -1,13 +1,18 @@
 <script setup>
-  import mainCards from '../components/mainCards.vue'
-  import FilterComponent from '../components/FilterComponent.vue';
+
+import DesktopNav from '../components/DesktopNav.vue'
+
+import mainCards from '../components/mainCards.vue'
+
 </script>
 
 <template>
-  <main>
-    <mainCards/>
-    <FilterComponent/>
-  </main>
+<mainCards/>
+
+<DesktopNav/>
+
+
+
 </template>
 <script>
 </script>

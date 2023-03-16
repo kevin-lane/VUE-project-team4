@@ -4,7 +4,7 @@
     <div id="navBar">
       <ul>
         <li>
-          <i class="bi bi-lamp-fill"></i>
+          <i class="bi bi-lamp-fill" ></i>
           <a href=""><h3>Furniture</h3> </a>
         </li>
         <li>
@@ -85,7 +85,9 @@
 export default {
   data() {
     return {
-      screenWidth: window.innerWidth
+      screenWidth: window.innerWidth,
+
+
     }
   },
   mounted() {
@@ -97,7 +99,8 @@ export default {
   methods: {
     handleResize() {
       this.screenWidth = window.innerWidth
-    }
+    },
+
   }
 }
 </script>
