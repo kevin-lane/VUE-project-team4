@@ -31,6 +31,7 @@
                 "loggedInUserId":loggedInUser[0].id
               }
               );
+              this.$router.push('/home');
             }
             else{
               document.getElementById('wrong-login-details').style.visibility = 'visible'
