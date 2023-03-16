@@ -57,6 +57,16 @@ export default {
                     if (response.ok) {
                         console.log('Data updated successfully');
                         console.log(this.$store.state.firstName);
+                        this.$store.commit('editProfile', {
+                            firstName: data.firstName,
+                            lastName: data.lastName,
+                            email: data.email,
+                            password: data.password
+                        });
+                        this.firstName = data.firstName;
+                        this.lastName = data.lastName;
+                        this.email = data.email;
+                        this.password = data.password;
                     } else {
                         console.log('Failed to update data');
                     }
