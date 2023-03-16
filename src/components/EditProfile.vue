@@ -40,12 +40,12 @@ export default {
         },
         updateData() {
             const data = {
-                id: this.id,
                 firstName: this.firstName,
                 email: this.email,
                 lastName: this.lastName,
                 password: this.password
             };
+
             fetch(`http://localhost:3000/users/${this.$store.state.loggedInUserId}`, {
                 method: 'PATCH',
                 headers: {
@@ -57,7 +57,6 @@ export default {
                     if (response.ok) {
                         console.log('Data updated successfully');
                         console.log(this.$store.state.firstName);
-                        this.$store.commit('editProfile', { firstName: this.firstName, lastName: this.lastName, email: this.email, password: this.password });
                     } else {
                         console.log('Failed to update data');
                     }
@@ -66,6 +65,7 @@ export default {
                     console.log(error);
                 });
         },
+
 
         handleClick() {
             if (this.showButton) {
@@ -103,12 +103,10 @@ export default {
         <div class="mid">
             <div class="container">
                 <form>
-                    <input v-model="this.firstName" class="form" placeholder="Enter your first name:"
-                        :disabled="inputDisabled">
-                    <input v-model="this.lastName" class=" form" placeholder="Enter your last name:"
-                        :disabled="inputDisabled">
-                    <input v-model="this.email" class="form" placeholder="Email:" :disabled="inputDisabled">
-                    <input v-model="this.password" class="form" placeholder="Old password:" :disabled="inputDisabled">
+                    <input v-model="firstName" class="form" placeholder="Enter your first name:" :disabled="inputDisabled">
+                    <input v-model="lastName" class=" form" placeholder="Enter your last name:" :disabled="inputDisabled">
+                    <input v-model="email" class="form" placeholder="Email:" :disabled="inputDisabled">
+                    <input v-model="password" class="form" placeholder="Old password:" :disabled="inputDisabled">
                 </form>
             </div>
         </div>
