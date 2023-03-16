@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "firstName": "Sixten",
+      "lastName": "Olsson",
+      "email": "sixtenolsson@live.se",
+      "password": "Sixty66"
+    },
+    {
+      "firstName": "Karin",
+      "lastName": "Lindberg",
+      "email": "karinlindberg@hotmail.se",
+      "password": "Carre44"
+    },
+    {
+      "firstName": "Felix",
+      "lastName": "Jansson",
+      "email": "felixjansson@gmail.com",
+      "password": "Felle22"
+    }
+  ]
+}
