@@ -2,7 +2,6 @@
 import mainCards from '../components/mainCards.vue'
 
 
-
 </script>
 
 <template>
