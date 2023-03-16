@@ -102,7 +102,7 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
       <div class="bildcard">
         <img :src="product.picture" :alt="product.title" class="cardimage" />
         <p class="profilName">{{ product.profilName }}</p>
-        <img :src="product.profilBild" :alt="product.title" class="profilimage" /> 
+        <img :src="product.profilBild" :alt="product.title" class="profilimage" />
       </div>
       <div class="infocard">
         <h2 class="cardTitle">{{ product.title }}</h2>
@@ -175,7 +175,7 @@ export default {
         )
       }
 
-      return this.products 
+      return this.products
     },
   },
   mounted() {
@@ -222,9 +222,7 @@ export default {
   }
 
 
-  }
-
-};
+  };
 </script>
 
 
