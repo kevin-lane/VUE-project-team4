@@ -1,11 +1,13 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import SearchForm from './SearchForm.vue';
 </script>
 <script>
 export default {
   data() {
     return {
-      screen: window.innerWidth
+      screen: window.innerWidth,
+      showContainer: false,
     }
   },
   mounted() {
@@ -24,8 +26,8 @@ export default {
     <!-- Create nav bar  -->
       <!-- Using bootstrap template and icons -->
 
-  <div class="nav" v-if="screen >= 730">
-    <h1><router-link to="/home" >Instabuy</router-link></h1>
+  <div class="nav" v-if="screen >= 1000">
+    <router-link to="/home" ><h1>Instabuy</h1></router-link>
     <nav class="navbar navbar-light fixed-top">
       <div class="container-fluid">
 
@@ -33,7 +35,10 @@ export default {
         <div id="icons">
           <router-link v-if="$store.state.wishClass == false" to="/wishlist"><i class="bi-suit-heart"></i></router-link>
           <router-link v-else to="/wishlist">{{this.$store.state.productPicture.length}}<i class="bi-suit-heart" id="red"></i></router-link>
-          <a href=""> <i class="bi-search"></i></a>
+
+
+          <button class="search" @click="showContainer = !showContainer"> <i class="bi-search"></i></button>
+
         </div>
         <!-- Hamburger menu button starts here   -->
         <button
@@ -80,15 +85,18 @@ export default {
       </div>
     </nav>
   </div>
+<div v-show="showContainer" class="search">
+<SearchForm/>
+</div>
+  <div v-if="screen <= 1000">
 
-  <div v-if="screen <= 730">
    <h1><router-link to="/home" >Instabuy</router-link></h1>
    <nav class="navbar">
 
         <router-link to="/home"><i class="bi bi-house-fill"></i> </router-link>
         <router-link v-if="$store.state.wishClass == false" to="/wishlist"><i class="bi-suit-heart"></i></router-link>
           <router-link v-else to="/wishlist">{{this.$store.state.productPicture.length}}<i class="bi-suit-heart" id="red"></i></router-link>
-        <router-link to=""><i class="bi bi-search"></i> </router-link>
+          <button class="search" @click="showContainer = !showContainer"> <i class="bi-search"></i></button>
         <router-link to="/add"><i class="bi bi-plus-lg"></i> </router-link>
         <router-link to="/profil"><i class="bi bi-person-fill"></i> </router-link>
     </nav>
@@ -104,7 +112,7 @@ export default {
 
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css');
 /* Query for desktop */
-@media screen and (min-width: 730px) {
+@media screen and (min-width: 1000px) {
 
 
 ul {
@@ -131,6 +139,9 @@ a:link {
 h1 {
   text-align: left;
   margin-left: 10px;
+  z-index: 999;
+  position: fixed;
+  cursor: pointer;
 }
 .bi-suit-heart {
   display: contents;
@@ -173,7 +184,7 @@ h1 {
 
 }
 /* Query for mobile */
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 1000px) {
 
   .navbar {
     overflow: hidden;
@@ -183,7 +194,7 @@ h1 {
     left: 0;
     width: 100%;
     text-align: center;
-    z-index: 1;
+    z-index: 334;
 }
 
 .navbar a {

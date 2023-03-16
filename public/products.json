@@ -3,11 +3,13 @@
     "id": 1,
     "title": "Väska",
     "profilName": "Sixten blixten",
-    "profilBild":"https://s3-alpha-sig.figma.com/img/b3d7/a818/a1a5b44c66b4d694e4f739c2406359db?Expires=1678665600&Signature=aZuuTYtgJiLY4o0RRY0EZNno4DfqlIlyxE69EmjBrpwPuoFOJjoPX8UOiKpiI3B36wcppAldoz1QT9-NbJ7xSSeO9YB1WiK5XtlNM83cb1SOg1zKgAAf87rwzQW6drv7fU3X3Wd8f7hTIBd~K93NOnybrTmeaHh6IexXJpquGQujlcfFFBpFFJ6S75qwUsAb9lTMGT3NBRVbXUikzSsiQXjJ8XAUr2W8quwvtpH8m8NUTLcOECi~-~59Pi6td84J-CIbWmB-JPMCiWJkAYhF4q6JpU9dfBAuQcBCes39oc2w9ex5IRm6J8YbmaN3ZdarlZ5T22wkWUQq4YvlXkdr1w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+    "profilBild":"https://s3-alpha-sig.figma.com/img/b3d7/a818/a1a5b44c66b4d694e4f739c2406359db?Expires=1679875200&Signature=CPtkIjqY~AN8622KYVoqnDdu8kGeLurs7tcWPqYpnu9P00ksY9FVp2su~rwntlqiyj0TTYuAGddBfoculnkBSyuCnjMD2GYzobuX5CVJHJZQybQldIRL-UUmcGW4Po5GG2dQHwbqhaBznlCiKbTjjEaxF89QHID7AUcT996TGrem8-seznJdbICXVO3C9mvlfKulUM70UoclboCHINs256D57jWD4BHFScY6g0YSIZK8TLpt38xW~wBsu1x9W5Thv-O9BIxgqnQZfyCTVaqNyV3GBymHj7A8Q7cODO73SNFPkFFVrjEn7KOuZQEDbG9V4TqBK9VQ6LvH7RCpxwX4ug__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
     "price": "99kr :-",
     "info": "Product 1 information, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ipsum odio, sagittis a volutpat non, semper in est. Fusce vel varius turpis. Sed nec lacinia mi. Morbi lacinia a felis quis gravida. Quisque ac porttitor tellus, ut varius neque. Vivamus in nisl sit amet neque molestie congue non eu tellus. In bibendum euismod velit, ut accumsan nisi gravida vel.",
-    "picture": "https://s3-alpha-sig.figma.com/img/77f7/e052/e1aa6279ee4c9a8e9cc8ca6c449cfdd0?Expires=1678665600&Signature=UfoMWOqVZIWBmOjh2qHMJYb2Bfju1pcBFxUuS-2X19BsgXAJ4orBaeQPzQO2CNkSlGXcMXDTLZ8PkjD127TvaB6lI-OmiJlar3OeD73zFvboAeEH6zeVwwPIu-tlBIE5FnsK45dKywnoTf1Z-IDTG4YYYXjyJxayI7JTpPgXzW0wbn-PmBSI~Afu8fONyIGYGBbFj5CaU4az8CCMPVWJW9OyiJNXWqmO~l3bOhdAQnHFiQRo~0mDy6yo1WeSmLO2nK6hZ43qtMxocoZdFZSYRsbairRIS9ct1APA~UQo3eWhH4fWX~z1fEl2APaZYIQ64mzfwOh3gTbf4NhxopymYg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
-    "filter": ["Kläder"] 
+
+    "picture": "https://s3-alpha-sig.figma.com/img/77f7/e052/e1aa6279ee4c9a8e9cc8ca6c449cfdd0?Expires=1679875200&Signature=ATWhc2zrc1xAZZ3oXgqJ0s6AwF9ziu8ntXfavk9DdTRKmdvIS6aEGf3WlITWi2q4QpxalDH-5Sch75E-uHfIQ31~lo2jvV2D5vpuWbhsqQWE-2gvcvXDYI4Kb21BIm-QkpGBqtqlAUNz2R0p3HnsKx5EgG-fwPt8Mggq7ma~NqahOT6OnLudyE1WSX-9yAzxAY1oKk4Jalgzx5sCIGbZ8eqqcnwdRRW1MKAcJD7PgKbOOXGi1poQLvY3SIxDaBlA2y~71bzN83PD4nwVI9qza-kdvhR16CGWXjX17umraRgrSwgX9D5vjG3YUEgOk5ZiDXRTts-ddTdKf-ELdNKuuw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+    "filter": ["Kläder"]
+
   },
   {
     "id": 2,

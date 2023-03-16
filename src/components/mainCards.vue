@@ -4,64 +4,178 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
 </script>
 
 <template>
- <!-- <input type="text" v-model="textout"> -->
-    <div id="product-container"><!--//Oscar-->
 
-    <div v-for="product, index in products" :key="product.id" class="card" :class="product.filter"><!--Loopar igenom products.json arrayen och renderar varje product som ett "card"--><!--v-for, v-bind-->
+  <!-- <filterButtons/> -->
+  <div v-if="screenWidth >= 1100">
+  <div id="navBar">
+  <ul>
+    <li>
+      <i class="bi bi-box-fill" @click="selectedFilter = ''"></i>
+      <button class="filter-button" @click="selectedFilter = ''"><h3>Alla</h3></button>
+    </li>
+    <li>
+      <i class="bi bi-handbag-fill" @click="selectedFilter = 'Kläder'"></i>
+      <button class="filter-button" @click="selectedFilter = 'Kläder'"><h3>Kläder</h3></button>
+    </li>
+    <li>
+      <i class="bi bi-controller" @click="selectedFilter = 'Elektronik'"></i>
+      <button class="filter-button" @click="selectedFilter = 'Elektronik'"><h3>Elektronik</h3></button>
+    </li>
+    <li>
+      <i class="bi bi-lamp-fill" @click="selectedFilter = 'Inredning'"></i>
+      <button class="filter-button" @click="selectedFilter = 'Inredning'"><h3>Inredning</h3></button>
+    </li>
+    <li>
+      <i class="bi bi-music-note" @click="selectedFilter = 'Fritid'"></i>
+      <button class="filter-button" @click="selectedFilter = 'Fritid'"><h3>Fritid</h3></button>
+    </li>
+    <li>
+      <i class="bi bi-hypnotize" @click="selectedFilter = 'Sport'"></i>
+      <button class="filter-button" @click="selectedFilter = 'Sport'"><h3>Sport</h3></button>
+    </li>
+    <li>
+      <i class="bi bi-gem" @click="selectedFilter = 'Smycken'"></i>
+      <button class="filter-button" @click="selectedFilter = 'Smycken'"><h3>Smycken</h3></button>
+    </li>
+    <li>
+      <i class="bi bi-grid-3x3-gap-fill" @click="selectedFilter = 'Övrigt'"></i>
+      <button class="filter-button" @click="selectedFilter = 'Övrigt'"><h3>Övrigt</h3></button>
+    </li>
+  </ul>
+</div>
+</div>
+<div v-if="screenWidth <= 1100">
+
+<div id="navBar">
+  <ul>
+    <li>
+      <i class="bi bi-box-fill" @click="selectedFilter = ''"> </i>
+      <button class="filter-button" @click="selectedFilter = ''"><h3>Alla</h3></button>
+    </li>
+    <li>
+      <i class="bi bi-handbag-fill" @click="selectedFilter = 'Kläder'"></i>
+      <button class="filter-button" @click="selectedFilter = 'Kläder'"><h3>Kläder</h3></button>
+    </li>
+
+    <li>
+      <i class="bi bi-gem" @click="selectedFilter = 'Smycken'"></i>
+      <button class="filter-button" @click="selectedFilter = 'Smycken'"><h3>Smycken</h3></button>
+    </li>
+    <li>
+      <i class="bi bi-hypnotize" @click="selectedFilter = 'Sport'"></i>
+      <button class="filter-button" @click="selectedFilter = 'Sport'"><h3>Sport</h3></button>
+    </li>
+
+    <li>
+      <i class="bi bi-grid-3x3-gap-fill" @click="selectedFilter = 'Övrigt'"></i>
+      <button class="filter-button" @click="selectedFilter = 'Övrigt'"><h3>Övrigt</h3></button>
+    </li>
+  </ul>
+</div>
+
+</div>
+
+  <!-- <div id="product-container"> -->
+
+    <!-- <div class="filter-buttons">
+
+      <button class="filter-button" @click="selectedFilter = ''">Alla</button>
+      <button class="filter-button" @click="selectedFilter = 'Kläder'">Kläder</button>
+      <button class="filter-button" @click="selectedFilter = 'Elektronik'">Elektronik</button>
+      <button class="filter-button" @click="selectedFilter = 'Inredning'">Inredning</button>
+      <button class="filter-button" @click="selectedFilter = 'Fritid'">Fritid</button>
+      <button class="filter-button" @click="selectedFilter = 'Sport'">Sport</button>
+      <button class="filter-button" @click="selectedFilter = 'Smycken'">Smycken</button>
+      <button class="filter-button" @click="selectedFilter = 'Övrigt'">Övrigt</button>
+
+
+       <div v-for="filter in filters" :key="filter"> -->
+  <!-- <button class="filter-button" @click="selectedFilter = filter">{{filter}}</button> -->
+<!-- </div> -->
+
+
+    <!-- </div> -->
+
+    <div v-for="product,index in filteredProducts" :key="product.id" class="card">
 
       <div class="bildcard">
-        <img :src="product.picture" :alt="product.title" class="cardimage" /><!--Använder v-bind för att binda product taggarna med respektive css klass-->
+        <img :src="product.picture" :alt="product.title" class="cardimage" />
         <p class="profilName">{{ product.profilName }}</p>
-        <img :src="product.profilBild" :alt="product.title" class="profilimage" /> 
+        <img :src="product.profilBild" :alt="product.title" class="profilimage" />
       </div>
       <div class="infocard">
         <h2 class="cardTitle">{{ product.title }}</h2>
         <p class="infotitel">Info:</p>
         <p class="cardPris">{{ product.price }}</p>
         <p class="cardText">{{ product.info }}</p>
+
         <button class="gillaknapp" @click=" active(index, product)" :class="{ active: ListItem.includes(index) }"></button>
         <!-- TESTA KEY????? -->
         <!-- $store.commit('storeWish', product), -->
         <button class="köpknapp" @click="showContainer = true">Köp</button><!--visar popupprompt fönstret-->
 
 
-      </div>
 
-    <!-- </div> -->
-    <div v-if="showContainer" class="container"><!-- V-if för att visa/dölja "popupprompten" -->
-      <p>Är du säker att du vill fortsätta till kassan</p>
-      <SquaredQuestionMark />
-      <div class="button-container">
-        <button id="left-button" class="buttons" @click="showContainer = false">Avbryt</button><!--döljer popupprompt fönstret-->
-        <router-link to="/checkout" custom v-slot="{ navigate }">
-          <button @click="navigate" role="link" id="right-button" class="buttons">Fortsätt</button><!--Routerlink som navigerar till checkout-->
-        </router-link>
+      </div>
+      <div v-if="showContainer" class="container">
+        <p>Är du säker att du vill fortsätta till kassan</p>
+        <SquaredQuestionMark />
+        <div class="button-container">
+          <button id="left-button" class="buttons" @click="showContainer = false">Avbryt</button>
+          <router-link to="/checkout" custom v-slot="{ navigate }">
+            <button @click="navigate" role="link" id="right-button" class="buttons">Fortsätt</button>
+          </router-link>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
-</template>
-<script scoped>//Oscar
-export default {//Export default
+
+  <!-- </div> -->
+  </template>
+
+
+<script scope>
+export default {
   data() {
     return {
-      products: [],//returnar array från array med information som vi bygger "cardsen" med
-      showContainer: false,//showcontainer false gör så att popupprompten är döljd fdrån start
-      isActive: false,
+
+      products: [],
+      selectedFilter: "",
+      showContainer: false,
+      Kläder: ["Kläder"],
+      screenWidth: window.innerWidth,
       ListItem: []
-    };
+
+      };
   },
   computed: {
-    Itemlist() {
+
+    filters() {
+    const filtersa = new Set();
+    this.products.forEach((product) => {
+    filtersa.add(product.filter[0]);
+  });
+  return Array.from(filtersa);
+},
+
+    filteredProducts() {
+    if (!this.selectedFilter) {
+    return this.products;
+  } else {
+    return this.products.filter((product) => product.filter.includes(this.selectedFilter));
+  }
+},
+Itemlist() {
       if (this.$store.state.text.length > 0) {
         return this.products.filter((item) =>
           item.title.toLowerCase().includes(this.$store.state.text.toLowerCase())
         )
       }
 
-      return this.products 
+      return this.products
     },
+
   },
+
   mounted() {
     fetch("products.json")
       .then((response) => response.json())
@@ -69,8 +183,17 @@ export default {//Export default
         this.products = data;
 
       });
+      window.addEventListener('resize', this.handleResize)
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.handleResize)
   },
   methods: {
+
+    handleResize() {
+      this.screenWidth = window.innerWidth
+    },
+
 
     active(index, product){
       this.isActive = !this.isActive;
@@ -96,12 +219,19 @@ export default {//Export default
     }
   }
 
-};
+
+
+  }
+
+// };
 
 </script>
 
 
 <style scoped>/* //Oscar */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap');
+
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css');
  *,
 *::before,
 *::after {
@@ -110,6 +240,7 @@ export default {//Export default
   position: relative;
   font-weight: normal;
 }
+
 .container{
     position: fixed;
     background-color: #D0F2CC;
@@ -147,6 +278,124 @@ export default {//Export default
     background-color: #3AA05D;
   }
 
+  @media screen and (min-width: 1100px){/*desktopfilter */
+.filter-button{
+  padding: 0;
+  border: none;
+  background: none;
+}
+ul {
+  list-style: none;
+}
+li {
+  display: flex;
+  column-gap: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+
+}
+a {
+  color: black;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.bi:hover {
+  cursor: pointer;
+}
+.bi-suit-heart {
+  display: contents;
+}
+
+.bi {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  /* border: 1px solid black; */
+  border-radius: 30px;
+  padding: 20px;
+}
+
+#navBar {
+  /* margin-top: 100px; */
+  position: fixed;
+  width: 713px;
+  height: 65px;/* 65px */
+  left: 15px;
+  top: 145px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  z-index: 9;
+}
+
+#icons {
+  display: flex;
+  column-gap: 16px;
+  margin-left: 78%;
+}
+}
+@media screen and (max-width: 1100px){/*mobilfilter */
+  .filter-button{
+  padding: 0;
+  border: none;
+  background: none;
+}
+  #navBar {
+  /* margin-top: 100px; */
+  position: fixed;
+  width: 95vw;
+  height: 100px;/* 65px */
+  left: 5px;
+  top: 80px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  z-index: 9;
+
+}
+  ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  text-align: center;
+  margin-right: 20px;
+  column-gap: 14px;
+}
+
+a {
+  color: black;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.bi {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  background-color: white;
+  border-radius: 90px;
+  padding: 20px;
+}
+.bi:hover {
+  cursor: pointer;
+}
+a:hover {
+  background-color: rgb(117, 117, 117);
+  color: white;
+}
+h4 {
+  font-family: 'montserrat';
+  font-size: 14px;
+  text-align: left;
+  margin-left: 10px;
+}
+.bi-suit-heart {
+  display: contents;
+}
+
+
+}
 
  @media screen and (min-width: 800px){/*desktop */
   .card {
@@ -157,7 +406,7 @@ export default {//Export default
     padding: 0;
     width: 730px;
     height: 704px;
-    top: 204px;
+    top: 100px;
   }
   .cardimage {
     height: 530px;
@@ -171,6 +420,8 @@ export default {//Export default
     right: 0%;
     top: 0%;
     bottom: 24.57%;
+
+    object-fit: cover;
   }
   .profilimage{
     position: absolute;
@@ -179,6 +430,8 @@ export default {//Export default
     left: 47px;
     top: 53px;
     border-radius: 50%;
+
+    object-fit: cover;
   }
   .profilName{
     position: absolute;

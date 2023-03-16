@@ -47,6 +47,9 @@ const mutations = {
 
 
   },
+  Click(state, klick){
+    state.text = klick 
+    },
   removeWish(state, index) {
     state.productPicture.splice(index, 1);
     state.productPrice.splice(index, 1);
@@ -70,8 +73,11 @@ const state = {
   productPicture: [],
   productPrice: [],
   wishClass: false,
+  text: ''
 
 };
 
 //Uses strict: true
 export default createStore({ mutations, state, strict: true })
+
+

@@ -10,8 +10,6 @@ import loginForm from './components/LoginForm.vue'
 </script>
 
 <template>
-    <HeroSection />
-    <desktopNav />
-    <loginForm />
-    <editProfile />
+<HeroSection/>
+<desktopNav/>
 </template>
