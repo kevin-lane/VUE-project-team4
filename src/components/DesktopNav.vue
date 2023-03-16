@@ -1,14 +1,13 @@
 <template>
-
-    <!-- Create nav bar  -->
-      <!-- Using bootstrap template and icons -->
+  <!-- Create nav bar  -->
+  <!-- Using bootstrap template and icons -->
   <div class="nav">
     <nav class="navbar navbar-light bg-light fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <h1>Instabuy</h1>
         </a>
-          <!-- Nav bar search item and liked items icons  -->
+        <!-- Nav bar search item and liked items icons  -->
         <div id="icons">
           <a href=""><i class="bi-suit-heart"></i></a>
           <a href=""> <i class="bi-search"></i></a>
@@ -38,7 +37,7 @@
               aria-label="Close"
             ></button>
           </div>
-            <!-- Hamburger menu links   -->
+          <!-- Hamburger menu links   -->
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
@@ -58,7 +57,7 @@
                 <a class="nav-link" href="#">Inbox</a>
               </li>
 
-                <!-- Search bar  -->
+              <!-- Search bar  -->
               <form class="d-flex" role="search">
                 <input
                   class="form-control me-2"
@@ -75,8 +74,8 @@
     </nav>
   </div>
 
+  <!-- Nav bar category starts here  -->
 
-    <!-- Nav bar category starts here  -->
   <div id="container">
     <div id="navBar">
       <ul>

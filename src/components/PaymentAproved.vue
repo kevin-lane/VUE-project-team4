@@ -6,9 +6,10 @@ import IconTruck from '../components/IconTruck.vue'
 </script>
 
 <template>
-  <div id="flex-container">
+  <div v-if="approvedWindow" id="flex-container">
     <div id="content-container">
-      <IconX id="x-icon" />
+      <!-- This click event on the 'X' icon will close the approved shopping window when it's clicked -->
+      <IconX @click="approvedlcon" id="x-icon" />
       <h1>Tack för ditt köp</h1>
       <div id="icon-happy">
         <IconHappy />
@@ -21,7 +22,23 @@ import IconTruck from '../components/IconTruck.vue'
     </div>
   </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      approvedWindow: true,
+      payCom: false
+    }
+  },
+  methods: {
+    approvedlcon() {
+      this.approvedWindow = false // Approved window card closes and return the user to the homepage
+      window.location.reload()
+      this.$router.push('/home')
+    }
+  }
+}
+</script>
 <style scoped>
 #flex-container {
   display: flex;
@@ -63,10 +80,15 @@ h2 {
   margin-right: 3em;
 }
 
-#icon-sendbox{
-    display: flex;
-    justify-content: center;
-    gap: 4em;
-    margin-top: 5em; 
+#icon-sendbox {
+  display: flex;
+  justify-content: center;
+  gap: 4em;
+  margin-top: 5em;
+}
+
+.blur {
+  filter: blur(5px);
+  pointer-events: none;
 }
 </style>

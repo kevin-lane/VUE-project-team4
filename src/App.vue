@@ -4,13 +4,8 @@ import NavBar from './components/NavBar.vue'
 </script>
 
 <template>
-
   <HeroSection />
   <NavBar />
-
-
-
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
