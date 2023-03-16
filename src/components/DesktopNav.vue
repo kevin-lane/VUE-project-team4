@@ -36,7 +36,9 @@ export default {
           <router-link v-if="$store.state.wishClass == false" to="/wishlist"><i class="bi-suit-heart"></i></router-link>
           <router-link v-else to="/wishlist">{{this.$store.state.productPicture.length}}<i class="bi-suit-heart" id="red"></i></router-link>
 
+
           <button class="search" @click="showContainer = !showContainer"> <i class="bi-search"></i></button>
+
         </div>
         <!-- Hamburger menu button starts here   -->
         <button
@@ -87,7 +89,7 @@ export default {
 <SearchForm/>
 </div>
   <div v-if="screen <= 1000">
-    
+
    <h1><router-link to="/home" >Instabuy</router-link></h1>
    <nav class="navbar">
 
