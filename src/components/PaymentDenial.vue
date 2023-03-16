@@ -1,6 +1,6 @@
 <script setup>
-import IconSad from '../components/IconSad.vue'
-import IconX from '../components/IconX.vue'
+import IconSad from '../components/icons/IconSad.vue'
+import IconX from '../components/icons/IconX.vue'
 </script>
 
 

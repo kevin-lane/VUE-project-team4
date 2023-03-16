@@ -1,7 +1,7 @@
-
-<script>
- import IconTruck from '../components/IconTruck.vue'
-</script>
+<!--
+<script setup>
+ import IconTruck from '../components/icons/IconTruck.vue'
+</script> -->
 
 <template>
 
@@ -12,15 +12,15 @@
       <IconX @click="approvedlcon" id="x-icon" />
       <h1>Tack för ditt köp</h1>
       <div id="icon-happy">
-        <IconHappy />
+          <IconHappy />
 
-  </div>
-  </div>
+      </div>
+    </div>
   </div>
 </template>
 
 
-+<script>
+<script>
 export default {
   data() {
     return {

@@ -1,6 +1,6 @@
 <script setup>
-import IconChatt from '../components/IconChatt.vue'
-import IconPlace from '../components/IconPlace.vue'
+import IconChatt from '../components/icons/IconChatt.vue'
+import IconPlace from '../components/icons/IconPlace.vue'
 import SwishModal from './SwishModal.vue'
 import KlarnaModal from './KlarnaModal.vue'
 import PaymentAproved from './PaymentAproved.vue'
@@ -51,7 +51,7 @@ import HeroSection from './HeroSection.vue'
             <!-- <img id="profil-img" src="../assets/happy-ge5620ff7a_1920.jpg" alt=""> -->
             <!--<div id="profil-img"></div> -->
 
-            <img :src="getPicById(1111).profilBild" id="profil-img" />
+            <img :src="getPicById(1).profilBild" id="profil-img" />
             <p id="profile-name">Sixten Olsson</p>
           </div>
 

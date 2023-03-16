@@ -1,35 +1,63 @@
 import { createStore } from "vuex";
 
 const mutations = {
-  createAccount(state, newUser){
+  createAccount(state, newUser) {
     state.newUser = newUser;
   },
 
-  userLogin(state, {loggedIn, loggedInUserId}){
+  userLogin(state, { loggedIn, loggedInUserId, firstName, lastName, email, password }) {
     state.loggedIn = loggedIn;
     state.loggedInUserId = loggedInUserId;
+    state.firstName = firstName;
+    state.lastName = lastName;
+    state.email = email;
+    state.password = password;
     console.log(state.loggedInUserId);
   },
 
-  storeWish(state, product){
+  setLoggedInUserId(state, userId) {
+    state.loggedInUserId = userId;
+  },
+  setfirstName(state, userId) {
+    state.firstName = userId;
+  },
+  setLastName(state, lastName) {
+    state.lastName = lastName;
+  },
+  setEmail(state, email) {
+    state.email = email;
+  },
+  setPassword(state, password) {
+    state.password = password;
+  },
 
-  state.productPicture.push(product.picture);
-  state.productPrice.push(product.price);
-  state.wishClass = true;
+  editProfile(state, { firstName, lastName, email, password }) {
+    state.firstName = firstName;
+    state.lastName = lastName;
+    state.email = email;
+    state.password = password;
+  },
+
+
+  storeWish(state, product) {
+
+    state.productPicture.push(product.picture);
+    state.productPrice.push(product.price);
+    state.wishClass = true;
 
 
   },
   Click(state, klick){
-    state.text = klick 
+    state.text = klick
     },
   removeWish(state, index) {
     state.productPicture.splice(index, 1);
-  state.productPrice.splice(index, 1);
+    state.productPrice.splice(index, 1);
 
 
 
-  if(state.productPrice.length < 1){
-    state.wishClass = false;
+    if (state.productPrice.length < 1) {
+      state.wishClass = false;
     }
   }
 };
@@ -38,7 +66,10 @@ const mutations = {
 const state = {
   newUser: false,
   loggedIn: false,
-  loggedInUserId: 0,
+  loggedInUserId: null,
+  firstName: '',
+  lastName: '',
+  email: '',
   productPicture: [],
   productPrice: [],
   wishClass: false,
@@ -48,5 +79,3 @@ const state = {
 
 //Uses strict: true
 export default createStore({ mutations, state, strict: true })
-
-
