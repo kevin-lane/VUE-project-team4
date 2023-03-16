@@ -1,157 +1,85 @@
 <script>
+
+import { mapState } from 'vuex';
+
 export default {
-  data() {
-    return {
-        id: 1   , // set default ID to 1
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',   
-        showButton: false,
-        inputDisabled: true
-    }
-  },
-  mounted() {
-    this.fetchData();
-  },
-  methods: {
-    fetchData() {
-      fetch(`http://localhost:3000/users/${this.id}`)
-        .then(response => response.json())
-        .then(data => {
-          this.firstName = data.firstName;
-          this.email = data.email;
-          this.lastName = data.lastName;
-          this.password = data.password;
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    computed: {
+        ...mapState(['loggedInUserId', 'firstName', 'lastName', 'email', 'password'])
     },
-    updateData() {
-      const data = {
-        id: this.id,
-        firstName: this.firstName,
-        email: this.email,
-        lastName: this.lastName,
-        password: this.password
-      };
-      fetch(`http://localhost:3000/users/${this.id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      .then(response => {
-        if (response.ok) {
-          console.log('Data updated successfully');
-        } else {
-          console.log('Failed to update data');
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    },
-    handleClick() {
-        this.inputDisabled = false; // Enable input field
-      },
 
-      handleButton() {
-        this.showButton = true; // Enable input field
-      },
-      reloadPage() {
-      window.location.reload();
-    }
-    }
-  }
-
-    /* data() {
+    data() {
         return {
-            user: {
-                id: 1, // set default ID to 1
-                firstName: '',
-                lastName: '',
-                email: '',
-                password: ''
-            },
-
-            showButton: false
+            showButton: false,
+            inputDisabled: true
         }
     },
-   async mounted() {
-        await this.fetchUser(1) // fetch user with ID 1 by default
+    mounted() {
+        this.fetchData();
     },
-    methods: {
-        async fetchUser(id) {
-            try {
-                const response = await fetch(`https://localhost:3000/users/${id}`)
-
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch user data for ID ${id}.`)
-                }
-
-                const userData = await response.json()
-                this.user = userData
-            } catch (error) {
-                console.error(error.message)
+    watch: {
+        firstName(newVal, oldVal) {
+            if (newVal !== oldVal) {
+                this.$store.commit('editProfile', { firstName: this.firstName, lastName: this.lastName, email: this.email, password: this.password });
             }
         },
-        async updateUser() {
-            try {
-                const response = await fetch(`https://localhost:3000/users/${this.user.id}`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(this.user)
+    },
+
+    methods: {
+        fetchData() {
+            fetch(`http://localhost:3000/users/${this.$store.state.loggedInUserId}`)
+                .then(response => response.json())
+                .then(data => {
+                    this.firstName = data.firstName;
+                    this.email = data.email;
+                    this.lastName = data.lastName;
+                    this.password = data.password;
                 })
-
-                if (!response.ok) {
-                    throw new Error(`Failed to update user with ID ${this.user.id}.`)
-                }
-
-                console.log(`User with ID ${this.user.id} updated successfully.`)
-            } catch (error) {
-                console.error(error.message)
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        updateData() {
+            const data = {
+                id: this.id,
+                firstName: this.firstName,
+                email: this.email,
+                lastName: this.lastName,
+                password: this.password
+            };
+            fetch(`http://localhost:3000/users/${this.$store.state.loggedInUserId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Data updated successfully');
+                        this.$store.commit('editProfile', { firstName: this.firstName, lastName: this.lastName, email: this.email, password: this.password });
+                    } else {
+                        console.log('Failed to update data');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        handleClick() {
+            if (this.showButton) {
+                this.inputDisabled = false; // Enable input field
             }
-        } 
-    } */
+        },
 
-// export default {
-//     data() {
-//         return {
-//             input: {
-//                 firstName: '',
-//                 lastName: '',
-//                 email: '',
-//                 password: ''
-//             },
-
-//             showButton: false
-
-//         }
-//     },
-//     methods: {
-//         updatePost() {
-//             console.warn(this.users)
-//             fetch("https://localhost:3000/users" + this.$route.params.id, {
-//                 method: 'GET',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 },
-//                 body: JSON.stringify({ name: this.input.firstName, lastname: this.input.lastName, email: this.input.email, password: this.input.password })
-//             })
-//                 .then(response => response.json())
-//                 .then(data => this.input = console.log(data))
-//         }
-//     },
-
-//     mounted() {
-//         console.warn(this.$route.params.id)
-//     }
-// }
+        handleButton() {
+            this.showButton = !this.showButton;
+            this.inputDisabled = !this.showButton // Disable input field if buttons are hidden
+        },
+        reloadPage() {
+            window.location.reload();
+        }
+    }
+}
 
 </script>
 
@@ -173,10 +101,12 @@ export default {
         <div class="mid">
             <div class="container">
                 <form>
-                    <input v-model="firstName" class="form" placeholder="Enter your first name:" :disabled="inputDisabled">
-                    <input v-model="lastName" class=" form" placeholder="Enter your last name:" :disabled="inputDisabled">
-                    <input v-model="email" class="form" placeholder="Email:" :disabled="inputDisabled">
-                    <input v-model="password" class="form" placeholder="Old password:" :disabled="inputDisabled">
+                    <input v-model="this.firstName" class="form" placeholder="Enter your first name:"
+                        :disabled="inputDisabled">
+                    <input v-model="this.lastName" class=" form" placeholder="Enter your last name:"
+                        :disabled="inputDisabled">
+                    <input v-model="this.email" class="form" placeholder="Email:" :disabled="inputDisabled">
+                    <input v-model="this.password" class="form" placeholder="Old password:" :disabled="inputDisabled">
                 </form>
             </div>
         </div>
@@ -185,7 +115,7 @@ export default {
         <div class="bottom">
             <div class="bottom-left">
                 <router-link to="/profile" custom v-slot="{ navigate }">
-                    <button v-if="showButton" @click="reloadPage()" role="link" class="cancel">Cancel</button>
+                    <button v-if="showButton" @click="reloadPage();" role="link" class="cancel">Cancel</button>
                 </router-link>
             </div>
             <div class="bottom-right">
@@ -215,6 +145,7 @@ input {
 }
 
 .wrapper {
+    background-color: white;
     margin: auto;
     width: 40%;
     height: 70vh;
