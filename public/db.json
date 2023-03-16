@@ -55,6 +55,13 @@
       "lastName": "Lindgren",
       "email": "danne@live.se",
       "password": "Danne13"
+    },
+    {
+      "id": 81,
+      "firstName": "Anna",
+      "lastName": "Book",
+      "email": "annabook@live.se",
+      "password": "Anna22"
     }
   ]
 }
