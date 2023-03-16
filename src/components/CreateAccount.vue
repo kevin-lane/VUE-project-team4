@@ -45,6 +45,7 @@
 </script>
 
 <template>
+  <div class="signup-flex">
   <form id="signup-form">
     <h1>Sign up</h1>
     <input v-model="firstName" class="input-forms" type="text" placeholder="First Name" required>
@@ -60,12 +61,18 @@
       <label id="policy-approval-label" for="policy-approval">I accept Terms and Privacy Policy</label>
     <button @click="addNewUser" id="signup-button">Sign up</button><br>
   </form>
+</div>
 </template>
 
 <style scoped>
   h1{
     color: white;
     margin-bottom: 1rem;
+  }
+  .signup-flex{
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
   }
   #signup-form{
     background-color: #4F7598;
@@ -75,6 +82,7 @@
     top: 100px;
     padding-top: 2rem;
     text-align: center;
+
   }
   .input-forms{
     width: 354px;

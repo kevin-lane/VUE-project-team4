@@ -112,6 +112,11 @@ export default {
 
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css');
 /* Query for desktop */
+.search{
+  border: 0;
+  background: transparent;
+}
+
 @media screen and (min-width: 1000px) {
 
 
@@ -139,7 +144,7 @@ a:link {
 h1 {
   text-align: left;
   margin-left: 10px;
-  z-index: 999;
+  z-index: 9999999999999999999999999999999999;
   position: fixed;
   cursor: pointer;
 }

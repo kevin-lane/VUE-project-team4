@@ -75,6 +75,7 @@ img{
     height: 229px;
     max-width: 175px;
     border-radius: 6px;
+    object-fit:cover;
 }
 
 #warn {
