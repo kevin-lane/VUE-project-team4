@@ -85,7 +85,8 @@ export default {
         },
 
         reloadPage() {
-            window.location.reload();
+            this.$router.push('./profil');
+
         }
     }
 }
@@ -122,13 +123,13 @@ export default {
 
         <div class="bottom">
             <div class="bottom-left">
-                <router-link to="/profile" custom v-slot="{ navigate }">
+                <router-link to="./profile" custom v-slot="{ navigate }">
                     <button v-if="showButton" @click="reloadPage();" role="link" class="cancel">Cancel</button>
                 </router-link>
             </div>
             <div class="bottom-right">
-                <router-link to="/profile" custom v-slot="{ navigate }">
-                    <button v-if="showButton" @click="updateData();" role="link" class="save">Done</button>
+                <router-link to="./profile" custom v-slot="{ navigate }">
+                    <button v-if="showButton" @click="updateData(); reloadPage();" role="link" class="save">Done</button>
                 </router-link>
             </div>
         </div>
