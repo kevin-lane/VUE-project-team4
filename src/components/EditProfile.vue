@@ -13,16 +13,20 @@ export default {
             inputDisabled: true
         }
     },
+
     mounted() {
         this.fetchData();
     },
+
     watch: {
         firstName(newVal, oldVal) {
             if (newVal !== oldVal) {
                 this.$store.commit('editProfile', { firstName: this.firstName, lastName: this.lastName, email: this.email, password: this.password });
+                // this.updateData();
             }
         },
     },
+
 
     methods: {
         fetchData() {
@@ -38,6 +42,7 @@ export default {
                     console.log(error);
                 });
         },
+
         updateData() {
             const data = {
                 firstName: this.firstName,
@@ -57,6 +62,8 @@ export default {
                     if (response.ok) {
                         console.log('Data updated successfully');
                         console.log(this.$store.state.firstName);
+                        console.log(this.$store.state.lastName);
+                        this.$store.commit('editProfile', data);
                     } else {
                         console.log('Failed to update data');
                     }
@@ -66,7 +73,6 @@ export default {
                 });
         },
 
-
         handleClick() {
             if (this.showButton) {
                 this.inputDisabled = false; // Enable input field
@@ -75,13 +81,15 @@ export default {
 
         handleButton() {
             this.showButton = !this.showButton;
-            this.inputDisabled = !this.showButton // Disable input field if buttons are hidden
+            this.inputDisabled = !this.showButton; // Disable input field if buttons are hidden
         },
+
         reloadPage() {
             window.location.reload();
         }
     }
 }
+
 
 </script>
 
