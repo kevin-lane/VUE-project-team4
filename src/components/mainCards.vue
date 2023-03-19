@@ -102,7 +102,7 @@ import SquaredQuestionMark from './icons/SquaredQuestionMark.vue';
       <div class="bildcard">
         <img :src="product.picture" :alt="product.title" class="cardimage" />
         <p class="profilName">{{ product.profilName }}</p>
-        <img :src="product.profilBild" :alt="product.title" class="profilimage" /> 
+        <img :src="product.profilBild" :alt="product.title" class="profilimage" />
       </div>
       <div class="infocard">
         <h2 class="cardTitle">{{ product.title }}</h2>
@@ -138,46 +138,35 @@ export default {
   data() {
     return {
 
-      products: [],
-      selectedFilter: "",
-      showContainer: false,
-      Kläder: ["Kläder"],
-      screenWidth: window.innerWidth,
-
+      products: [],//Array av produkter från produkts.json
+      selectedFilter: "",//Selectedfilter är den nuvarande filtertaggen som "söks" efter
+      showContainer: false,//för att dölja köpconfirm rutan från början
+      screenWidth: window.innerWidth,//för responsivitet
+      ListItem: []//till wishlist
 
       };
   },
   computed: {
 
-    filters() {
-    const filtersa = new Set();
-    this.products.forEach((product) => {
-    filtersa.add(product.filter[0]);
-  });
-  return Array.from(filtersa);
-},
-
-    filteredProducts() {
-    if (!this.selectedFilter) {
+    filteredProducts() {//returnerar en filtrerad lista baserad på selected filter
+    if (!this.selectedFilter) {//om selected filter är false (tex om det inte har valts något filter)så returnas hela listan med produkter
     return this.products;
-  } else {
+  } else {//om selectedfilter inte är false så filtreras produkterna baserat på om product.filter innehåller den valda filtertaggen
     return this.products.filter((product) => product.filter.includes(this.selectedFilter));
   }
 },
-
-
-  },
-  computed: {
-    Itemlist() {
+Itemlist() {
       if (this.$store.state.text.length > 0) {
         return this.products.filter((item) =>
           item.title.toLowerCase().includes(this.$store.state.text.toLowerCase())
         )
       }
 
-      return this.products 
+      return this.products
     },
+
   },
+
   mounted() {
     fetch("products.json")
       .then((response) => response.json())
@@ -222,9 +211,11 @@ export default {
   }
 
 
+
   }
 
-};
+// };
+
 </script>
 
 
