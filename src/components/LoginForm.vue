@@ -63,7 +63,7 @@ export default {
 </script>
 
 <template>
-    <form id="login-form">
+    <!-- <form id="login-form">
       <h1>Sign in</h1>
       <input v-model="email" class="input-forms" type="email" placeholder="Email Address">
       <br>
@@ -75,15 +75,9 @@ export default {
       <button @click.prevent="loginUser" id="login-button">Login</button><br>
       <a class="links" href="">Forgot Password?</a>
       <p id="wrong-login-details">Wrong email or password</p>
-    </form>
-</template>
+    </form> -->
 
-<style scoped>
-h1 {
-  color: white;
-  margin-bottom: 1rem;
-}
-  <div class="login-flex">
+    <div class="login-flex">
   <form id="login-form">
     <h1>Sign in</h1>
     <input v-model="email" class="input-forms" type="email" placeholder="Email Address">
@@ -100,9 +94,16 @@ h1 {
 </template>
 
 <style scoped>
+h1 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+
   h1{
     color: white;
     margin-bottom: 1rem;
+
   }
   .login-flex{
     display: flex;
@@ -134,6 +135,7 @@ h1 {
   }
   #create-account-link{
     position: absolute;
+  }
 
 #login-form {
   background-color: #4F7598;
