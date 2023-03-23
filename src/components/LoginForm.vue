@@ -118,7 +118,25 @@ h1 {
     height: 564px;
     text-align: center;
     border-radius: 6px;
+    </form>
+  </div>
+</template>
 
+<style scoped>
+h1 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.login-flex {
+  display: flex;
+  justify-content: center;
+  margin-top: 5em;
+}
+
+.links {
+  color: white;
+}
 
   }
   .input-forms{
